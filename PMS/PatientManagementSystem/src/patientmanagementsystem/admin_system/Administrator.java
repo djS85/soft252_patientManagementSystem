@@ -8,4 +8,14 @@ public class Administrator extends User {
         
     }
 
+    @Override
+    public void createAccount() {
+    }
+
+    @Override
+    public void deleteAccount() {
+    }
+    
+    
+
 }
