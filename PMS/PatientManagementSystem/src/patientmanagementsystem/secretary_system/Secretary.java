@@ -8,12 +8,6 @@ public class Secretary extends User {
     
     }
     
-    @Override
-    public void createAccount() {
-    }
-
-    @Override
-    public void deleteAccount() {
-    }
+    
 
 }

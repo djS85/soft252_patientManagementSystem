@@ -7,12 +7,11 @@ public abstract class User {
     private String firstname;
     private String surname;
     
+    private int age;
+
     public User() {
         
     }
-    
-    public abstract void createAccount();
-    public abstract void deleteAccount();
     
     public void login() {
         System.out.println("You are now logged in.");
@@ -58,6 +57,14 @@ public abstract class User {
     public String getFullName() {
         String fullname = firstname + " " + surname;
         return fullname;
+    }
+    
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
     
 }

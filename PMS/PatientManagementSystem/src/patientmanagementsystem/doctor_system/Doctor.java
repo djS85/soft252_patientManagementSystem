@@ -8,14 +8,4 @@ public class Doctor extends User {
         login();
     }
 
-    @Override
-    public void createAccount() {
-    }
-
-    @Override
-    public void deleteAccount() {
-    }
-    
-    
-    
 }

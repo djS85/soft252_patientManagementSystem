@@ -4,18 +4,11 @@ import patientmanagementsystem.User;
 
 public class Patient extends User {
     
-    public Patient() {
-    
+    public Patient(String _firstname, String _lastname, String _address, int _age) {
+        this.setFirstname(_firstname);
+        this.setSurname(_lastname);
+        this.setAddress(_address);
+        this.setAge(_age);
     }
-
-    @Override
-    public void createAccount() {
-    }
-
-    @Override
-    public void deleteAccount() {
-    }
-    
-    
 
 }
