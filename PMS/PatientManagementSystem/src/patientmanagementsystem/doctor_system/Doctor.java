@@ -5,7 +5,7 @@ import patientmanagementsystem.User;
 public class Doctor extends User {
     
     public Doctor() {
-        login();
+        
     }
 
 }
