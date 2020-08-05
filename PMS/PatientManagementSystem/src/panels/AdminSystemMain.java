@@ -7,6 +7,9 @@ package panels;
 
 import frames.ViewMain;
 import javax.swing.JLabel;
+import patientmanagementsystem.admin_system.Administrator;
+import patientmanagementsystem.admin_system.DoctorRatingsPanel;
+import patientmanagementsystem.admin_system.EditDoctorPanel;
 
 /**
  *
@@ -19,14 +22,24 @@ public class AdminSystemMain extends javax.swing.JPanel {
      */
     
     private ViewMain parent;
+    private Administrator user;
     
-    public AdminSystemMain(ViewMain _parent) {
+    private EditDoctorPanel editDoctorPanel;
+    private DoctorRatingsPanel doctorRatingsPanel;
+    
+    public enum AdminPanelType {
+        
+        EDIT_DOCTOR,
+        DOCTOR_RATINGS
+    
+    }
+    
+    public AdminSystemMain(ViewMain _parent, Administrator _user) {
         
         this.parent = _parent;
+        this.user = _user;
         
         initComponents();
-        
-        
         
     }
 
@@ -40,22 +53,104 @@ public class AdminSystemMain extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setAlignmentX(0.0F);
         setAlignmentY(0.0F);
         setMaximumSize(new java.awt.Dimension(600, 600));
         setMinimumSize(new java.awt.Dimension(600, 600));
         setPreferredSize(new java.awt.Dimension(600, 600));
-        setLayout(new java.awt.BorderLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Admin Home");
-        add(jLabel2, java.awt.BorderLayout.PAGE_START);
+
+        jButton1.setText("Add/Remove Doctor");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Doctor Ratings");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(121, 121, 121)
+                .addComponent(jButton1)
+                .addGap(77, 77, 77)
+                .addComponent(jButton2))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addGap(150, 150, 150)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap())
+        );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.setPanel(AdminPanelType.EDIT_DOCTOR);
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.setPanel(AdminPanelType.DOCTOR_RATINGS);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    public void setPanel(AdminPanelType adminPanel) {
+        
+        switch (adminPanel) {
+            
+            case EDIT_DOCTOR:
+                if ( editDoctorPanel == null ) {
+                    editDoctorPanel = new EditDoctorPanel(user);
+                    parent.setContentPane(editDoctorPanel);
+                } else {
+                    parent.setContentPane(editDoctorPanel);
+                }
+                break;
+                
+            case DOCTOR_RATINGS:
+                if ( doctorRatingsPanel == null ) {
+                    doctorRatingsPanel = new DoctorRatingsPanel(user);
+                    parent.setContentPane(doctorRatingsPanel);
+                } else {
+                    parent.setContentPane(doctorRatingsPanel);
+                }
+                break;
+                
+                
+            default:
+                break;
+        
+        }
+        
+        parent.repaint();
+        parent.revalidate();
+    
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

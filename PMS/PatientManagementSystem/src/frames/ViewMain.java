@@ -8,10 +8,20 @@ package frames;
 import panels.AdminSystemMain;
 import panels.CreateAccountPanel;
 import panels.DoctorSystemMain;
+import panels.LogInPanel;
 import panels.PanelType;
 import static panels.PanelType.ADMIN_MAIN;
 import static panels.PanelType.CREATE_ACCOUNT;
 import static panels.PanelType.DOCTOR_MAIN;
+import static panels.PanelType.LOG_IN;
+import panels.PatientSystemMain;
+import patientmanagementsystem.User;
+import patientmanagementsystem.admin_system.Administrator;
+import patientmanagementsystem.admin_system.DoctorRatingsPanel;
+import patientmanagementsystem.admin_system.EditDoctorPanel;
+import patientmanagementsystem.doctor_system.Doctor;
+import patientmanagementsystem.patient_system.Patient;
+import patientmanagementsystem.secretary_system.Secretary;
 
 /**
  *
@@ -27,12 +37,21 @@ public class ViewMain extends javax.swing.JFrame {
     private CreateAccountPanel createAccountPanel;
     private AdminSystemMain adminSystemMain;
     private DoctorSystemMain doctorSystemMain;
+    private PatientSystemMain patientSystemMain;
+    private LogInPanel logInPanel;
+    private EditDoctorPanel editDoctorPanel;
+    private DoctorRatingsPanel doctorRatingsPanel;
+    
+    
+    protected User loggedInUser;
+    
+    protected Administrator loggedInAdmin;
+    protected Patient loggedInPatient;
+    protected Secretary loggedInSec;
+    protected Doctor loggedInDoctor;
     
     
     public ViewMain() {
-        
-        adminSystemMain = new AdminSystemMain(this);
-        doctorSystemMain = new DoctorSystemMain(this);
         
         initComponents();
         
@@ -49,11 +68,8 @@ public class ViewMain extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,28 +77,17 @@ public class ViewMain extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PMS Home");
 
-        jButton2.setText("Admin Home");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Doctor Home");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setText("Patient Home");
-
-        jButton4.setText("Secretary Home");
-
         jButton5.setText("Create Account");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("Log In");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
             }
         });
 
@@ -93,51 +98,36 @@ public class ViewMain extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(229, 229, 229)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32))
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 454, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(247, 247, 247)
+                .addComponent(jButton6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5))
-                .addContainerGap())
+                .addComponent(jButton5)
+                .addContainerGap(280, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        this.setPanel(ADMIN_MAIN);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        this.setPanel(DOCTOR_MAIN);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         this.setPanel(CREATE_ACCOUNT);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        this.setPanel(LOG_IN);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,7 +171,7 @@ public class ViewMain extends javax.swing.JFrame {
             case ADMIN_MAIN:
                 
                 if ( adminSystemMain == null ) {
-                    adminSystemMain = new AdminSystemMain(this);
+                    adminSystemMain = new AdminSystemMain(this, loggedInAdmin);
                     setContentPane(adminSystemMain);
                 } else {
                     setContentPane(adminSystemMain);
@@ -211,6 +201,26 @@ public class ViewMain extends javax.swing.JFrame {
                 
                 break;
                 
+            case LOG_IN:
+                
+                if ( logInPanel == null ) {
+                    logInPanel = new LogInPanel(this);
+                    setContentPane(logInPanel);
+                } else {
+                    setContentPane(logInPanel);
+                }
+                
+                break;
+                
+            case PATIENT_MAIN:
+                
+                if ( patientSystemMain == null ) {
+                    patientSystemMain = new PatientSystemMain(this, loggedInPatient);
+                    setContentPane(patientSystemMain);
+                } else {
+                    setContentPane(patientSystemMain);
+                }
+                
             default:
                 break;
         
@@ -223,11 +233,20 @@ public class ViewMain extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+    public void setLoggedInPatient(Patient patient) {
+        this.loggedInPatient = patient;
+    }
+    
+    public void setLoggedInAdmin(Administrator admin) {
+        this.loggedInAdmin = admin;
+    }
+    
+    public User getUser() {
+        return this.loggedInUser;
+    }
 }

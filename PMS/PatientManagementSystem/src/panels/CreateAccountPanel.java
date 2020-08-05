@@ -5,9 +5,18 @@
  */
 package panels;
 
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import frames.ViewMain;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Random;
+import patientmanagementsystem.patient_system.Patient;
+import patientmanagementsystem.patient_system.Patients;
 
 /**
  *
@@ -19,10 +28,21 @@ public class CreateAccountPanel extends javax.swing.JPanel {
      * Creates new form CreateAccountPanel
      */
     
+    protected final String filePath = "C:\\Users\\djs85\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\patients.json";
+    
+    protected Gson gson;
+    
     protected ViewMain parent;
+    
+    protected Patients patients;
+    
+    protected Random r;
     
     public CreateAccountPanel(ViewMain _parent) {
         this.parent = _parent;
+        this.gson = new GsonBuilder().setPrettyPrinting().create();
+        patients = new Patients();
+        writePatients(patients);
         initComponents();
     }
 
@@ -47,6 +67,8 @@ public class CreateAccountPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jTextField7 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Create Patient Account");
@@ -65,6 +87,8 @@ public class CreateAccountPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jLabel6.setText("Patient Password :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -91,12 +115,15 @@ public class CreateAccountPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(254, 254, 254)
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(228, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -128,7 +155,11 @@ public class CreateAccountPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 257, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -142,13 +173,43 @@ public class CreateAccountPanel extends javax.swing.JPanel {
         
         String address = jTextField3.getText() + ", " + jTextField4.getText() + ", " + jTextField5.getText();
         
+        String pwd = jTextField7.getText();
+        
         int age = Integer.valueOf(jTextField6.getText());
         
         System.out.println(firstname + " " + surname + "\n" + address + "\n" + age);
         
+        try ( FileReader fr = new FileReader(filePath) ) {            
+            patients.setPatients(gson.fromJson(fr, new TypeToken<ArrayList<Patient>>() {}.getType()));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        
+        Patient patient = new Patient(firstname, surname, address, age);
+        patient.setPassword(pwd);
+        setPatientUserID(patient);
+        
+        System.out.println("Patient UID : " + patient.getUserID());
+        
+        patients.addPatient(patient);
+        
+        writePatients(patients);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public void writePatients(Patients patients) {
+        // its all about the way this part is setup with filewriter/reader.
+        try ( FileWriter fw = new FileWriter(filePath) ) {          
+            gson.toJson(patients.getPatients(), fw);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void setPatientUserID(Patient _patient) {
+        r = new Random();
+        _patient.setUserID("P" + r.nextInt(10000));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -157,11 +218,13 @@ public class CreateAccountPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
 }

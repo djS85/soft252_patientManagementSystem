@@ -1,3 +1,11 @@
-{
-    
-}
+[
+  {
+    "userID": "P5053",
+    "address": "226A Albert Rd, Devonport, Plymouth",
+    "firstname": "Dan",
+    "surname": "Southern",
+    "password": "password",
+    "age": 25,
+    "accountApproved": false
+  }
+]

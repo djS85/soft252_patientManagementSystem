@@ -1,0 +1,22 @@
+[
+    
+    {
+        "userID": "A6666",
+        "address": "226A Albert Rd, Devonport, Plymouth",
+        "firstname": "Dan",
+        "surname": "Southern",
+        "password": "imanadmin",
+        "age": 34,
+        "accountApproved": true
+    },
+    {
+        "userID": "A7777",
+        "address": "184 Albert Rd, Devonport, Plymouth",
+        "firstname": "Another",
+        "surname": "Person",
+        "password": "alsoadmin",
+        "age": 34,
+        "accountApproved": true
+    }
+
+]

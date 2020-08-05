@@ -6,21 +6,21 @@ public abstract class User {
     private String address;
     private String firstname;
     private String surname;
+    private String password;
     
     private int age;
+    
+    private String gender;
+    
+    private boolean accountApproved;
+    
+    
 
     public User() {
+        this.accountApproved = false;
         
     }
     
-    public void login() {
-        System.out.println("You are now logged in.");
-    }
-    
-    public void logout() {
-        System.out.println("you are now logged out.");
-    }
-
     // getters and setters.
     public String getUserID() {
         return userID;
@@ -66,5 +66,31 @@ public abstract class User {
     public void setAge(int age) {
         this.age = age;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isAccountApproved() {
+        return accountApproved;
+    }
+
+    public void setAccountApproved(boolean accountApproved) {
+        this.accountApproved = accountApproved;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+    
+    
     
 }
