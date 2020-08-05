@@ -13,7 +13,11 @@ import patientmanagementsystem.doctor_system.Doctor;
 
 public class Administrator extends User {
     
-    protected final String doctorPath = "C:\\Users\\djs85\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\doctors.json";
+    // Laptop
+//    protected final String doctorPath = "C:\\Users\\djs85\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\doctors.json";
+    
+    // Desktop
+    protected final String doctorPath = "C:\\Users\\Dyn\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\doctors.json";
     
     protected Random r;
     

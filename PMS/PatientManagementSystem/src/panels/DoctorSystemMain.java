@@ -6,6 +6,7 @@
 package panels;
 
 import frames.ViewMain;
+import patientmanagementsystem.doctor_system.Doctor;
 
 /**
  *
@@ -19,7 +20,10 @@ public class DoctorSystemMain extends javax.swing.JPanel {
     
     protected ViewMain parent;
     
-    public DoctorSystemMain(ViewMain _parent) {
+    private Doctor user;
+    
+    public DoctorSystemMain(ViewMain _parent, Doctor _user) {
+        this.user = _user;
         this.parent = _parent;
         initComponents();
     }
@@ -38,12 +42,21 @@ public class DoctorSystemMain extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(600, 600));
         setMinimumSize(new java.awt.Dimension(600, 600));
         setPreferredSize(new java.awt.Dimension(600, 600));
-        setLayout(new java.awt.BorderLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Doctor Main");
-        add(jLabel1, java.awt.BorderLayout.PAGE_START);
+        jLabel1.setText("Doctor Home");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
 

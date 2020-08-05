@@ -168,13 +168,15 @@ public class EditDoctorPanel extends javax.swing.JPanel {
         String firstname = jTextField2.getText().toString();
         String surname = jTextField3.getText().toString();
         
-        String address = jLabel4.getText() + ", " + jTextField5.getText() + ", " + jTextField6.getText();
+        String address = jTextField4.getText() + ", " + jTextField5.getText() + ", " + jTextField6.getText();
         
         int age = Integer.valueOf(jTextField7.getText());
         
         String pwd = jTextField8.getText().toString();
         
         admin.addDoctorAccount(firstname, surname, address, age, pwd);
+        
+        clearFields();
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -184,9 +186,21 @@ public class EditDoctorPanel extends javax.swing.JPanel {
         
         admin.removeDoctorAccount(docID);
         
+        clearFields();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
+    public void clearFields() {
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jTextField5.setText("");
+        jTextField6.setText("");
+        jTextField7.setText("");
+        jTextField8.setText("");
+        
+    }
     
     
     

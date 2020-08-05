@@ -15,6 +15,7 @@ public enum PanelType {
     CREATE_ACCOUNT,
     DOCTOR_MAIN,
     LOG_IN,
-    PATIENT_MAIN
+    PATIENT_MAIN,
+    SEC_MAIN
     
 }

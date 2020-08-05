@@ -1,11 +1,20 @@
 [
   {
-    "userID": "D5828",
-    "address": "Doctor Surname :, 4, 5",
-    "firstname": "1",
-    "surname": "2",
-    "password": "password",
-    "age": 67,
+    "userID": "D6666",
+    "address": "226A Albert Rd, Devonport, Plymouth",
+    "firstname": "Dan",
+    "surname": "Southern",
+    "password": "pwd",
+    "age": 25,
+    "accountApproved": false
+  },
+  {
+    "userID": "D4070",
+    "address": "12 Some Street, Somewhere, Aplace",
+    "firstname": "Hugo",
+    "surname": "Mongoose",
+    "password": "pwd",
+    "age": 54,
     "accountApproved": false
   }
 ]

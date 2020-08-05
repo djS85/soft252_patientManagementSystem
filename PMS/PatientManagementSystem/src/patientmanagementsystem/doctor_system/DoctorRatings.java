@@ -7,7 +7,7 @@ public class DoctorRatings {
     protected ArrayList<DoctorRating> ratings;
     
     public DoctorRatings() {
-        ratings = new ArrayList<DoctorRating>();
+       ratings = new ArrayList<DoctorRating>();
     }
 
     public ArrayList<DoctorRating> getRatings() {
@@ -19,7 +19,7 @@ public class DoctorRatings {
     }
 
     public void addRating(DoctorRating _rating) {
-        this.ratings.add(_rating);
+        ratings.add(_rating);
     }
     
 }

@@ -15,11 +15,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import static panels.PanelType.ADMIN_MAIN;
+import static panels.PanelType.DOCTOR_MAIN;
 import static panels.PanelType.PATIENT_MAIN;
+import static panels.PanelType.SEC_MAIN;
 import patientmanagementsystem.User;
 import patientmanagementsystem.admin_system.Administrator;
+import patientmanagementsystem.doctor_system.Doctor;
 import patientmanagementsystem.patient_system.Patient;
 import patientmanagementsystem.patient_system.Patients;
+import patientmanagementsystem.secretary_system.Secretary;
 
 /**
  *
@@ -31,8 +35,17 @@ public class LogInPanel extends javax.swing.JPanel {
      * Creates new form LogInPanel
      */
     
-    protected final String patientPath = "C:\\Users\\djs85\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\patients.json";
-    protected final String adminPath = "C:\\Users\\djs85\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\admin.json";
+    // Laptop
+//    protected final String patientPath = "C:\\Users\\djs85\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\patients.json";
+//    protected final String adminPath = "C:\\Users\\djs85\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\admin.json";
+//    protected final String secPath = "C:\\Users\\djs85\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\secretary.json";
+//    protected final String docPath = "C:\\Users\\djs85\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\doctors.json";
+
+    // Desktop
+    protected final String patientPath = "C:\\Users\\Dyn\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\patients.json";
+    protected final String adminPath = "C:\\Users\\Dyn\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\admin.json";
+    protected final String secPath = "C:\\Users\\Dyn\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\secretary.json";
+    protected final String docPath = "C:\\Users\\Dyn\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\doctors.json";
     
     protected ViewMain parent;
     
@@ -44,6 +57,8 @@ public class LogInPanel extends javax.swing.JPanel {
     
     protected Administrator admin;
     protected Patient patient;
+    protected Doctor doctor;
+    protected Secretary secretary;
     
     public LogInPanel(ViewMain _parent) {
         this.parent = _parent;
@@ -146,20 +161,100 @@ public class LogInPanel extends javax.swing.JPanel {
                 if ( searchAdmins(userId, pwd) ) {
                     parent.setPanel(ADMIN_MAIN);
                 }
+                break;
+                
+            case 'D':
+                if ( searchDoctors(userId, pwd) ) {
+                    parent.setPanel(DOCTOR_MAIN);
+                }
+                break;
+                
+            case 'S':
+                if ( searchSecretarys(userId, pwd) ) {
+                    parent.setPanel(SEC_MAIN);
+                }
+                
+                
+            default:
+                break;
         }
         
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public boolean searchSecretarys(String _userId, String _pwd) {
+        
+        boolean foundSecAccount = false;
+        
+        ArrayList<Secretary> secs = new ArrayList<Secretary>();
+        
+        try ( FileReader fr = new FileReader(secPath) ) {            
+            secs = gson.fromJson(fr, new TypeToken<ArrayList<Secretary>>() {}.getType());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        
+        for ( int i = 0; i < secs.size(); i++ ) {
+            if ( secs.get(i).getPassword().equalsIgnoreCase(_pwd) && secs.get(i).getUserID().equalsIgnoreCase(_userId) ) {
+                foundSecAccount = true;                
+                JsonObject obj = new JsonObject();
+                obj.addProperty("firstname", secs.get(i).getFirstname());
+                obj.addProperty("surname", secs.get(i).getSurname());
+                obj.addProperty("address", secs.get(i).getAddress());
+                obj.addProperty("age", secs.get(i).getAge());
+                obj.addProperty("password", _pwd);
+                obj.addProperty("userID", _userId);
+                obj.addProperty("accountApproved", true);
+                createSecretaryFromJson(obj);
+                setLoggedInAdmin();
+            }
+        }
+        
+        return foundSecAccount;
+        
+    }
+    
+    public boolean searchDoctors(String _userId, String _pwd) {
+        
+        boolean foundDoctorAccount = false;
+        
+        ArrayList<Secretary> secs = new ArrayList<Secretary>();
+        
+        try ( FileReader fr = new FileReader(docPath) ) {            
+            secs = gson.fromJson(fr, new TypeToken<ArrayList<Secretary>>() {}.getType());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        
+        for ( int i = 0; i < secs.size(); i++ ) {
+            if ( secs.get(i).getPassword().equalsIgnoreCase(_pwd) && secs.get(i).getUserID().equalsIgnoreCase(_userId) ) {
+                foundDoctorAccount = true;                
+                JsonObject obj = new JsonObject();
+                obj.addProperty("firstname", secs.get(i).getFirstname());
+                obj.addProperty("surname", secs.get(i).getSurname());
+                obj.addProperty("address", secs.get(i).getAddress());
+                obj.addProperty("age", secs.get(i).getAge());
+                obj.addProperty("password", _pwd);
+                obj.addProperty("userID", _userId);
+                obj.addProperty("accountApproved", true);
+                createSecretaryFromJson(obj);
+                setLoggedInAdmin();
+            }
+        }
+        
+        return foundDoctorAccount;
+        
+    }
+    
     public boolean searchAdmins(String _userId, String _pwd) {
     
         boolean foundAdminAccount = false;
         
-        ArrayList<Administrator> admins = new ArrayList<Administrator>();
+        ArrayList<Doctor> docs = new ArrayList<Doctor>();
         
         try ( FileReader fr = new FileReader(adminPath) ) {            
-            admins = gson.fromJson(fr, new TypeToken<ArrayList<Administrator>>() {}.getType());
+            docs = gson.fromJson(fr, new TypeToken<ArrayList<Doctor>>() {}.getType());
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -168,19 +263,19 @@ public class LogInPanel extends javax.swing.JPanel {
 //            System.out.println(admins.get(i).getFullName());
 //        }
         
-        for ( int i = 0; i < admins.size(); i++ ) {
-            if ( admins.get(i).getPassword().equalsIgnoreCase(_pwd) && admins.get(i).getUserID().equalsIgnoreCase(_userId) ) {
+        for ( int i = 0; i < docs.size(); i++ ) {
+            if ( docs.get(i).getPassword().equalsIgnoreCase(_pwd) && docs.get(i).getUserID().equalsIgnoreCase(_userId) ) {
                 foundAdminAccount = true;                
                 JsonObject obj = new JsonObject();
-                obj.addProperty("firstname", admins.get(i).getFirstname());
-                obj.addProperty("surname", admins.get(i).getSurname());
-                obj.addProperty("address", admins.get(i).getAddress());
-                obj.addProperty("age", admins.get(i).getAge());
+                obj.addProperty("firstname", docs.get(i).getFirstname());
+                obj.addProperty("surname", docs.get(i).getSurname());
+                obj.addProperty("address", docs.get(i).getAddress());
+                obj.addProperty("age", docs.get(i).getAge());
                 obj.addProperty("password", _pwd);
                 obj.addProperty("userID", _userId);
                 obj.addProperty("accountApproved", true);
-                createAdminFromJson(obj);
-                setLoggedInAdmin();
+                createDoctorFromJson(obj);
+                setLoggedInDoctor();
             }
         }
         
@@ -225,14 +320,22 @@ public class LogInPanel extends javax.swing.JPanel {
     
     public void createPatientFromJson(JsonObject _obj) {
         patient = gson.fromJson(_obj, Patient.class);
-        String json = gson.toJson(patient);
+//        String json = gson.toJson(patient);
 //        System.out.println(json);
     }
     
     public void createAdminFromJson(JsonObject _obj) {
         admin = gson.fromJson(_obj, Administrator.class);
-        String json = gson.toJson(admin);
+//        String json = gson.toJson(admin);
 //        System.out.println(json);
+    }
+    
+    public void createDoctorFromJson(JsonObject _obj) {
+        doctor = gson.fromJson(_obj, Doctor.class);
+    }
+    
+    public void createSecretaryFromJson(JsonObject _obj) {
+        secretary = gson.fromJson(_obj, Secretary.class);
     }
     
     public void setLoggedInAdmin() {
@@ -241,6 +344,14 @@ public class LogInPanel extends javax.swing.JPanel {
     
     public void setLoggedInPatient() {
         parent.setLoggedInPatient(this.patient);
+    }
+    
+    public void setLoggedInDoctor() {
+        parent.setLoggedInDoctor(this.doctor);
+    }
+    
+    public void setLoggedInSecretary() {
+        parent.setLoggedInSecretary(this.secretary);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

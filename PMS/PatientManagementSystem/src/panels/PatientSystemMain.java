@@ -6,6 +6,9 @@
 package panels;
 
 import frames.ViewMain;
+import static panels.PatientSystemMain.PatientPanelType.BOOK_APPOINTMENT;
+import static panels.PatientSystemMain.PatientPanelType.RATE_DOCTOR;
+import static panels.PatientSystemMain.PatientPanelType.VIEW_APPOINTMENTS;
 import patientmanagementsystem.admin_system.DoctorRatingsPanel;
 import patientmanagementsystem.patient_system.Patient;
 
@@ -20,13 +23,17 @@ public class PatientSystemMain extends javax.swing.JPanel {
      */
     
     private DoctorRatingsPanel doctorRatingsPanel;
+    private AppointmentPanel appointmentPanel;
+    private ViewAppointments viewAppointments;
     
     protected ViewMain parent;
     protected Patient user;
     
     public enum PatientPanelType {
         
-        DOCTOR_RATINGS
+        RATE_DOCTOR,
+        BOOK_APPOINTMENT,
+        VIEW_APPOINTMENTS
     
     }
     
@@ -45,13 +52,34 @@ public class PatientSystemMain extends javax.swing.JPanel {
     
         switch (panelType) {
             
-            case DOCTOR_RATINGS:
+            case RATE_DOCTOR:
                 if ( this.doctorRatingsPanel == null ) {
                     this.doctorRatingsPanel = new DoctorRatingsPanel(user);
+                    parent.setContentPane(this.doctorRatingsPanel);
                 } else {
                     parent.setContentPane(this.doctorRatingsPanel);
                 } 
             
+                break;
+                
+            case BOOK_APPOINTMENT:
+                if ( this.appointmentPanel == null ) {
+                    this.appointmentPanel = new AppointmentPanel(user, this);
+                    parent.setContentPane(this.appointmentPanel);
+                } else {
+                    parent.setContentPane(this.appointmentPanel);
+                }
+                
+                break;
+                
+            case VIEW_APPOINTMENTS:
+                if ( viewAppointments == null ) {
+                    this.viewAppointments = new ViewAppointments(user, this);
+                    parent.setContentPane(this.viewAppointments);
+                } else {
+                    parent.setContentPane(this.viewAppointments);
+                }
+                
                 break;
                 
             default:
@@ -61,6 +89,10 @@ public class PatientSystemMain extends javax.swing.JPanel {
         parent.repaint();
         parent.revalidate();
         
+    }
+    
+    public void setHomePanel() {
+        parent.setPanel(PanelType.PATIENT_MAIN);
     }
 
     /**
@@ -75,19 +107,32 @@ public class PatientSystemMain extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Patient Home");
 
-        jButton1.setText("Rate Doctor");
+        jButton1.setText("Rate Doctor/ View Ratings");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("View Ratings");
+        jButton3.setText("Book Appointment");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("View Appointments");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -100,11 +145,15 @@ public class PatientSystemMain extends javax.swing.JPanel {
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(253, 253, 253)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jLabel1)
-                            .addComponent(jButton2))))
+                        .addComponent(jLabel1)))
                 .addContainerGap(240, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(208, 208, 208))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,23 +161,36 @@ public class PatientSystemMain extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85)
+                .addGap(90, 90, 90)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
-                .addGap(0, 410, Short.MAX_VALUE))
+                .addGap(0, 376, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.setPanel(PatientPanelType.DOCTOR_RATINGS);
+        this.setPanel(RATE_DOCTOR);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        this.setPanel(BOOK_APPOINTMENT);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.setPanel(VIEW_APPOINTMENTS);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

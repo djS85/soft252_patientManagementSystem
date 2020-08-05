@@ -15,6 +15,7 @@ import static panels.PanelType.CREATE_ACCOUNT;
 import static panels.PanelType.DOCTOR_MAIN;
 import static panels.PanelType.LOG_IN;
 import panels.PatientSystemMain;
+import panels.SecretarySystemMain;
 import patientmanagementsystem.User;
 import patientmanagementsystem.admin_system.Administrator;
 import patientmanagementsystem.admin_system.DoctorRatingsPanel;
@@ -41,6 +42,7 @@ public class ViewMain extends javax.swing.JFrame {
     private LogInPanel logInPanel;
     private EditDoctorPanel editDoctorPanel;
     private DoctorRatingsPanel doctorRatingsPanel;
+    private SecretarySystemMain secretarySystemMain;
     
     
     protected User loggedInUser;
@@ -182,7 +184,7 @@ public class ViewMain extends javax.swing.JFrame {
             case DOCTOR_MAIN:
                 
                 if ( doctorSystemMain == null ) {
-                    doctorSystemMain = new DoctorSystemMain(this);
+                    doctorSystemMain = new DoctorSystemMain(this, loggedInDoctor);
                     setContentPane(doctorSystemMain);
                 } else {
                     setContentPane(doctorSystemMain);
@@ -221,6 +223,15 @@ public class ViewMain extends javax.swing.JFrame {
                     setContentPane(patientSystemMain);
                 }
                 
+            case SEC_MAIN:
+                if ( secretarySystemMain == null ) {
+                    secretarySystemMain = new SecretarySystemMain(this, loggedInSec);
+                    setContentPane(secretarySystemMain);
+                } else {
+                    setContentPane(secretarySystemMain);
+                }
+                break;
+                
             default:
                 break;
         
@@ -248,5 +259,13 @@ public class ViewMain extends javax.swing.JFrame {
     
     public User getUser() {
         return this.loggedInUser;
+    }
+
+    public void setLoggedInDoctor(Doctor doctor) {
+        this.loggedInDoctor = doctor;
+    }
+
+    public void setLoggedInSecretary(Secretary secretary) {
+        this.loggedInSec = secretary;
     }
 }
