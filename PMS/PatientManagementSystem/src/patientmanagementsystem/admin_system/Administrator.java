@@ -85,7 +85,4 @@ public class Administrator extends User {
     
     }
     
-    public void viewDoctorRatings() {}
-    public void provideDoctorFeedback() {}
-    
 }

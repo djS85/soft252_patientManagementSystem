@@ -223,6 +223,8 @@ public class ViewMain extends javax.swing.JFrame {
                     setContentPane(patientSystemMain);
                 }
                 
+                break;
+                
             case SEC_MAIN:
                 if ( secretarySystemMain == null ) {
                     secretarySystemMain = new SecretarySystemMain(this, loggedInSec);
@@ -230,6 +232,7 @@ public class ViewMain extends javax.swing.JFrame {
                 } else {
                     setContentPane(secretarySystemMain);
                 }
+                
                 break;
                 
             default:

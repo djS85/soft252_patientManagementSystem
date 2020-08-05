@@ -1,26 +1,20 @@
 [
   {
-    "doctorSurname": "Dr. 2",
-    "doctorID": "D5828",
+    "doctorSurname": "Dr. Southern",
+    "doctorID": "D6666",
     "rating": 10,
-    "feedback": "good at being a doctor"
+    "feedback": "Excellent!"
   },
   {
-    "doctorSurname": "Dr. 2",
-    "doctorID": "D5828",
-    "rating": 9,
-    "feedback": "doctor 2 was very good."
+    "doctorSurname": "Dr. Southern",
+    "doctorID": "D6666",
+    "rating": 5,
+    "feedback": "A bit shifty, but OK"
   },
   {
-    "doctorSurname": "Dr. 2",
-    "doctorID": "D5828",
-    "rating": 1,
-    "feedback": "nothing to say really"
-  },
-  {
-    "doctorSurname": "Dr. 2",
-    "doctorID": "D5828",
-    "rating": 1,
-    "feedback": "helmetsmoker"
+    "doctorSurname": "Dr. Southern",
+    "doctorID": "D6666",
+    "rating": 0,
+    "feedback": "Made me feel uneasy :("
   }
 ]

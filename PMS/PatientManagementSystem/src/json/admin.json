@@ -7,5 +7,23 @@
     "password": "pwd",
     "age": 25,
     "accountApproved": false
+  },
+  {
+    "userID": "A7777",
+    "address": "226A Albert Rd, Devonport, Plymouth",
+    "firstname": "Dan",
+    "surname": "Southern",
+    "password": "pwd",
+    "age": 25,
+    "accountApproved": false
+  },
+  {
+    "userID": "A8888",
+    "address": "226A Albert Rd, Devonport, Plymouth",
+    "firstname": "Dan",
+    "surname": "Southern",
+    "password": "pwd",
+    "age": 25,
+    "accountApproved": false
   }
 ]
