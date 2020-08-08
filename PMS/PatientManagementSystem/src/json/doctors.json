@@ -16,5 +16,14 @@
     "password": "pwd",
     "age": 54,
     "accountApproved": false
+  },
+  {
+    "userID": "D3979",
+    "address": "88 Ape Rd, Ape City, Aplace",
+    "firstname": "Anape",
+    "surname": "Zaius",
+    "password": "pwd",
+    "age": 67,
+    "accountApproved": false
   }
 ]

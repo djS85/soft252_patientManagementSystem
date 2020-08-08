@@ -8,9 +8,16 @@
   },
   {
     "patientFullname": "Dan Southern",
-    "doctor": "Zeus",
+    "doctor": "Zaius",
     "patientID": "P6666",
     "date": "12/12/2020",
     "notes": "has cold like symptoms"
+  },
+  {
+    "patientFullname": "Ellen Ripley",
+    "doctor": "Southern",
+    "patientID": "P2345",
+    "date": "20/8/2020",
+    "notes": "complaining of chest pains."
   }
 ]
