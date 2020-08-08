@@ -62,7 +62,6 @@ public class DoctorAppointmentPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Appointment Date (DD/MM/YYYY) :");
 
-        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);

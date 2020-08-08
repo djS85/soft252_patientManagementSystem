@@ -219,27 +219,27 @@ public class LogInPanel extends javax.swing.JPanel {
         
         boolean foundDoctorAccount = false;
         
-        ArrayList<Secretary> secs = new ArrayList<Secretary>();
+        ArrayList<Doctor> docs = new ArrayList<Doctor>();
         
         try ( FileReader fr = new FileReader(docPath) ) {            
-            secs = gson.fromJson(fr, new TypeToken<ArrayList<Secretary>>() {}.getType());
+            docs = gson.fromJson(fr, new TypeToken<ArrayList<Doctor>>() {}.getType());
         } catch (IOException ex) {
             ex.printStackTrace();
         }
         
-        for ( int i = 0; i < secs.size(); i++ ) {
-            if ( secs.get(i).getPassword().equalsIgnoreCase(_pwd) && secs.get(i).getUserID().equalsIgnoreCase(_userId) ) {
+        for ( int i = 0; i < docs.size(); i++ ) {
+            if ( docs.get(i).getPassword().equalsIgnoreCase(_pwd) && docs.get(i).getUserID().equalsIgnoreCase(_userId) ) {
                 foundDoctorAccount = true;                
                 JsonObject obj = new JsonObject();
-                obj.addProperty("firstname", secs.get(i).getFirstname());
-                obj.addProperty("surname", secs.get(i).getSurname());
-                obj.addProperty("address", secs.get(i).getAddress());
-                obj.addProperty("age", secs.get(i).getAge());
+                obj.addProperty("firstname", docs.get(i).getFirstname());
+                obj.addProperty("surname", docs.get(i).getSurname());
+                obj.addProperty("address", docs.get(i).getAddress());
+                obj.addProperty("age", docs.get(i).getAge());
                 obj.addProperty("password", _pwd);
                 obj.addProperty("userID", _userId);
                 obj.addProperty("accountApproved", true);
-                createSecretaryFromJson(obj);
-                setLoggedInAdmin();
+                createDoctorFromJson(obj);
+                setLoggedInDoctor();
             }
         }
         
