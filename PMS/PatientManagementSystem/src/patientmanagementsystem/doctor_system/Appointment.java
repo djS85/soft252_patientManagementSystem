@@ -55,7 +55,7 @@ public class Appointment {
     }
     
     public void doctorAddNotes(String _doctorNotes) {
-        this.notes = this.notes + "\n" + _doctorNotes;
+        this.notes = this.notes + " : " + _doctorNotes;
     }
 
 }

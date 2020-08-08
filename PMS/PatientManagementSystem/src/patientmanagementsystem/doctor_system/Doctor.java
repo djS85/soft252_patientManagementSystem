@@ -46,11 +46,13 @@ public class Doctor extends User {
         
     }
     
+    public void makeAppointmentNotes() {
+        
+        
     
-    public void viewAppointments() {}
-    public void makeAppoointmentNotes() {}
+    }
+
     public void viewPatientHistory() {}
-    
     public void createPrescription() {}
 
     public ArrayList<Appointment> getAppointments() {

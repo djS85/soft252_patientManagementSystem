@@ -53,8 +53,9 @@ public class Patient extends User {
     }
     
     public void viewHistory() {}
-    public void viewAppointment() {}
-    public void requestAccountDeletion() {}
+    
+    
+//    public void requestAccountDeletion() {}
 
     public void requestAppointment(String patientID, String patientFullname, String doctor, String date, String notes) {
         
