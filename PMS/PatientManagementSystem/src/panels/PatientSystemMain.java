@@ -94,6 +94,10 @@ public class PatientSystemMain extends javax.swing.JPanel {
     public void setHomePanel() {
         parent.setPanel(PanelType.PATIENT_MAIN);
     }
+    
+    public void clearFields() {
+        parent.clearFields();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

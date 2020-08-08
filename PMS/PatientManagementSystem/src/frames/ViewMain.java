@@ -5,6 +5,9 @@
  */
 package frames;
 
+import java.awt.Component;
+import java.awt.Container;
+import javax.swing.JTextField;
 import panels.AdminSystemMain;
 import panels.CreateAccountPanel;
 import panels.DoctorSystemMain;
@@ -242,6 +245,18 @@ public class ViewMain extends javax.swing.JFrame {
         
         this.repaint();
         this.revalidate();
+    
+    }
+    
+    public void clearFields() {
+        
+        Container container = this.getContentPane();
+        
+        for ( Component c : container.getComponents() ) {
+            if ( c instanceof JTextField ) {
+                ((JTextField) c).setText(null);
+            } 
+        }
     
     }
     

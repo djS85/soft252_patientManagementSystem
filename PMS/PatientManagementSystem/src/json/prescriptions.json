@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "medicine": "Amoxicillin",
+    "quantity": 24,
+    "dosage": "1 Per day",
+    "patientID": "P6666",
+    "doctorID": "D6666"
+  },
+  {
+    "medicine": "Aspirin",
+    "quantity": 48,
+    "dosage": "1 Per day",
+    "patientID": "P2345",
+    "doctorID": "D6666"
+  },
+  {
+    "medicine": "Paracetamol",
+    "quantity": 24,
+    "dosage": "1 Per week",
+    "patientID": "P2345",
+    "doctorID": "D6666"
+  }
+]
