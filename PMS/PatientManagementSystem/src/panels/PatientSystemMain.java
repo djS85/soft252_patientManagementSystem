@@ -9,6 +9,7 @@ import frames.ViewMain;
 import static panels.PatientSystemMain.PatientPanelType.BOOK_APPOINTMENT;
 import static panels.PatientSystemMain.PatientPanelType.RATE_DOCTOR;
 import static panels.PatientSystemMain.PatientPanelType.VIEW_APPOINTMENTS;
+import static panels.PatientSystemMain.PatientPanelType.VIEW_HISTORY;
 import patientmanagementsystem.admin_system.DoctorRatingsPanel;
 import patientmanagementsystem.patient_system.Patient;
 
@@ -25,6 +26,7 @@ public class PatientSystemMain extends javax.swing.JPanel {
     private DoctorRatingsPanel doctorRatingsPanel;
     private AppointmentPanel appointmentPanel;
     private ViewAppointments viewAppointments;
+    private ViewPatientHistory viewPatientHistory;
     
     protected ViewMain parent;
     protected Patient user;
@@ -33,7 +35,8 @@ public class PatientSystemMain extends javax.swing.JPanel {
         
         RATE_DOCTOR,
         BOOK_APPOINTMENT,
-        VIEW_APPOINTMENTS
+        VIEW_APPOINTMENTS,
+        VIEW_HISTORY
     
     }
     
@@ -82,6 +85,16 @@ public class PatientSystemMain extends javax.swing.JPanel {
                 
                 break;
                 
+            case VIEW_HISTORY:
+                if ( viewPatientHistory == null ) {
+                    viewPatientHistory = new ViewPatientHistory(user, this);
+                    parent.setContentPane(viewPatientHistory);
+                } else {
+                    parent.setContentPane(viewPatientHistory);
+                }
+                
+                break;
+                
             default:
                 break;
         }
@@ -113,6 +126,7 @@ public class PatientSystemMain extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Patient Home");
@@ -138,6 +152,13 @@ public class PatientSystemMain extends javax.swing.JPanel {
             }
         });
 
+        jButton4.setText("View History");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -156,7 +177,8 @@ public class PatientSystemMain extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(208, 208, 208))
         );
         layout.setVerticalGroup(
@@ -171,7 +193,9 @@ public class PatientSystemMain extends javax.swing.JPanel {
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
-                .addGap(0, 376, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4)
+                .addGap(0, 347, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -190,11 +214,17 @@ public class PatientSystemMain extends javax.swing.JPanel {
         this.setPanel(VIEW_APPOINTMENTS);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        this.setPanel(VIEW_HISTORY);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import patientmanagementsystem.patient_system.Patient;
 import patientmanagementsystem.patient_system.Patients;
+import utils.Files;
 
 /**
  *
@@ -27,8 +28,6 @@ public class CreateAccountPanel extends javax.swing.JPanel {
     /**
      * Creates new form CreateAccountPanel
      */
-    
-    protected final String filePath = "C:\\Users\\djs85\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\patients.json";
     
     protected Gson gson;
     
@@ -179,7 +178,7 @@ public class CreateAccountPanel extends javax.swing.JPanel {
         
         System.out.println(firstname + " " + surname + "\n" + address + "\n" + age);
         
-        try ( FileReader fr = new FileReader(filePath) ) {            
+        try ( FileReader fr = new FileReader(Files.PATIENTS_PATH) ) {            
             patients.setPatients(gson.fromJson(fr, new TypeToken<ArrayList<Patient>>() {}.getType()));
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -199,7 +198,7 @@ public class CreateAccountPanel extends javax.swing.JPanel {
 
     public void writePatients(Patients patients) {
         // its all about the way this part is setup with filewriter/reader.
-        try ( FileWriter fw = new FileWriter(filePath) ) {          
+        try ( FileWriter fw = new FileWriter(Files.PATIENTS_PATH) ) {          
             gson.toJson(patients.getPatients(), fw);
         } catch (IOException ex) {
             ex.printStackTrace();

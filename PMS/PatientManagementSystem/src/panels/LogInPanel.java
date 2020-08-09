@@ -24,6 +24,7 @@ import patientmanagementsystem.doctor_system.Doctor;
 import patientmanagementsystem.patient_system.Patient;
 import patientmanagementsystem.patient_system.Patients;
 import patientmanagementsystem.secretary_system.Secretary;
+import utils.Files;
 
 /**
  *
@@ -34,18 +35,6 @@ public class LogInPanel extends javax.swing.JPanel {
     /**
      * Creates new form LogInPanel
      */
-    
-    // Laptop
-//    protected final String patientPath = "C:\\Users\\djs85\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\patients.json";
-//    protected final String adminPath = "C:\\Users\\djs85\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\admin.json";
-//    protected final String secPath = "C:\\Users\\djs85\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\secretary.json";
-//    protected final String docPath = "C:\\Users\\djs85\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\doctors.json";
-
-    // Desktop
-    protected final String patientPath = "C:\\Users\\Dyn\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\patients.json";
-    protected final String adminPath = "C:\\Users\\Dyn\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\admin.json";
-    protected final String secPath = "C:\\Users\\Dyn\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\secretary.json";
-    protected final String docPath = "C:\\Users\\Dyn\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\doctors.json";
     
     protected ViewMain parent;
     
@@ -189,7 +178,7 @@ public class LogInPanel extends javax.swing.JPanel {
         
         ArrayList<Secretary> secs = new ArrayList<Secretary>();
         
-        try ( FileReader fr = new FileReader(secPath) ) {            
+        try ( FileReader fr = new FileReader(Files.SECRETARIES_PATH) ) {            
             secs = gson.fromJson(fr, new TypeToken<ArrayList<Secretary>>() {}.getType());
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -207,7 +196,7 @@ public class LogInPanel extends javax.swing.JPanel {
                 obj.addProperty("userID", _userId);
                 obj.addProperty("accountApproved", true);
                 createSecretaryFromJson(obj);
-                setLoggedInAdmin();
+                setLoggedInSecretary();
             }
         }
         
@@ -221,7 +210,7 @@ public class LogInPanel extends javax.swing.JPanel {
         
         ArrayList<Doctor> docs = new ArrayList<Doctor>();
         
-        try ( FileReader fr = new FileReader(docPath) ) {            
+        try ( FileReader fr = new FileReader(Files.DOCTORS_PATH) ) {            
             docs = gson.fromJson(fr, new TypeToken<ArrayList<Doctor>>() {}.getType());
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -253,7 +242,7 @@ public class LogInPanel extends javax.swing.JPanel {
         
         ArrayList<Doctor> docs = new ArrayList<Doctor>();
         
-        try ( FileReader fr = new FileReader(adminPath) ) {            
+        try ( FileReader fr = new FileReader(Files.ADMINS_PATH) ) {            
             docs = gson.fromJson(fr, new TypeToken<ArrayList<Doctor>>() {}.getType());
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -274,8 +263,8 @@ public class LogInPanel extends javax.swing.JPanel {
                 obj.addProperty("password", _pwd);
                 obj.addProperty("userID", _userId);
                 obj.addProperty("accountApproved", true);
-                createDoctorFromJson(obj);
-                setLoggedInDoctor();
+                createAdminFromJson(obj);
+                setLoggedInAdmin();
             }
         }
         
@@ -289,7 +278,7 @@ public class LogInPanel extends javax.swing.JPanel {
         
         patients = new Patients();
         
-        try ( FileReader fr = new FileReader(patientPath) ) {            
+        try ( FileReader fr = new FileReader(Files.PATIENTS_PATH) ) {            
             patients.setPatients(gson.fromJson(fr, new TypeToken<ArrayList<Patient>>() {}.getType()));
         } catch (IOException ex) {
             ex.printStackTrace();

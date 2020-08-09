@@ -12,16 +12,9 @@ import patientmanagementsystem.doctor_system.Appointment;
 import patientmanagementsystem.doctor_system.Appointments;
 import patientmanagementsystem.doctor_system.DoctorRating;
 import patientmanagementsystem.doctor_system.DoctorRatings;
+import utils.Files;
 
 public class Patient extends User {
-    
-    //Laptop
-//    protected final String ratingsPath = "C:\\Users\\djs85\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\doctor_ratings.json";
-//    protected final String appointmentsPath = "C:\\Users\\djs85\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\appointments.json";
-    
-    //Desktop
-    protected final String ratingsPath = "C:\\Users\\Dyn\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\doctor_ratings.json";
-    protected final String appointmentsPath = "C:\\Users\\Dyn\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\appointments.json";
     
     protected DoctorRating doctorRating;
     
@@ -83,7 +76,7 @@ public class Patient extends User {
             gson = new GsonBuilder().setPrettyPrinting().create();
         }
         
-        try ( FileReader fr = new FileReader(appointmentsPath) ) {
+        try ( FileReader fr = new FileReader(Files.APPOINTMENTS_PATH) ) {
             appointments = gson.fromJson(fr, new TypeToken<ArrayList<Appointment>>() {}.getType());
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -99,7 +92,7 @@ public class Patient extends User {
             gson = new GsonBuilder().setPrettyPrinting().create();
         }
         
-        try ( FileWriter fw = new FileWriter(appointmentsPath) ) {          
+        try ( FileWriter fw = new FileWriter(Files.APPOINTMENTS_PATH) ) {          
             gson.toJson(_appointments.getAppointments(), fw);
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -115,7 +108,7 @@ public class Patient extends User {
             gson = new GsonBuilder().setPrettyPrinting().create();
         }
         
-        try ( FileReader fr = new FileReader(ratingsPath) ) {
+        try ( FileReader fr = new FileReader(Files.DOCTOR_RATINGS_PATH) ) {
             doctorRatings = gson.fromJson(fr, new TypeToken<ArrayList<DoctorRating>>() {}.getType());
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -132,7 +125,7 @@ public class Patient extends User {
             gson = new GsonBuilder().setPrettyPrinting().create();
         }
         
-        try ( FileWriter fw = new FileWriter(ratingsPath) ) {          
+        try ( FileWriter fw = new FileWriter(Files.DOCTOR_RATINGS_PATH) ) {          
             gson.toJson(_doctorRatings.getRatings(), fw);
         } catch (IOException ex) {
             ex.printStackTrace();

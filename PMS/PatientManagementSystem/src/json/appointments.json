@@ -19,5 +19,12 @@
     "patientID": "P2345",
     "date": "20/8/2020",
     "notes": "complaining of chest pains."
+  },
+  {
+    "patientFullname": "Dan Southern",
+    "doctor": "Southern",
+    "patientID": "P6666",
+    "date": "20/02/2020",
+    "notes": "has covid-19 symptoms"
   }
 ]

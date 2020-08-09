@@ -18,7 +18,7 @@ public class EditDoctorPanel extends javax.swing.JPanel {
      * Creates new form EditDoctorPanel
      */
     
-    private Administrator admin;
+    protected Administrator admin;
     
     protected Gson gson;
     
@@ -168,7 +168,7 @@ public class EditDoctorPanel extends javax.swing.JPanel {
         String firstname = jTextField2.getText().toString();
         String surname = jTextField3.getText().toString();
         
-        String address = jTextField4.getText() + ", " + jTextField5.getText() + ", " + jTextField6.getText();
+        String address = jTextField4.getText().toString() + ", " + jTextField5.getText().toString() + ", " + jTextField6.getText().toString();
         
         int age = Integer.valueOf(jTextField7.getText());
         

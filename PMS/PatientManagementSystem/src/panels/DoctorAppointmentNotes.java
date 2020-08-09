@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import patientmanagementsystem.doctor_system.Appointment;
 import patientmanagementsystem.doctor_system.Appointments;
 import patientmanagementsystem.doctor_system.Doctor;
+import utils.Files;
 
 /**
  *
@@ -25,13 +26,6 @@ public class DoctorAppointmentNotes extends javax.swing.JPanel {
     /**
      * Creates new form DoctorAppointmentNotes
      */
-    
-    
-    //Laptop
-//    protected final String appointmentsPath = "C:\\Users\\djs85\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\appointments.json";
-    
-    //Desktop
-    protected final String appointmentsPath = "C:\\Users\\Dyn\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\appointments.json";
     
     private Doctor user;
     private DoctorSystemMain parent;
@@ -253,7 +247,7 @@ public class DoctorAppointmentNotes extends javax.swing.JPanel {
             gson = new GsonBuilder().setPrettyPrinting().create();
         }
         
-        try ( FileReader fr = new FileReader(appointmentsPath) ) {
+        try ( FileReader fr = new FileReader(Files.APPOINTMENTS_PATH) ) {
             appointments = gson.fromJson(fr, new TypeToken<ArrayList<Appointment>>() {}.getType());
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -268,7 +262,7 @@ public class DoctorAppointmentNotes extends javax.swing.JPanel {
             gson = new GsonBuilder().setPrettyPrinting().create();
         }
         
-        try ( FileWriter fw = new FileWriter(appointmentsPath) ) {          
+        try ( FileWriter fw = new FileWriter(Files.APPOINTMENTS_PATH) ) {          
             gson.toJson(_appointments.getAppointments(), fw);
         } catch (IOException ex) {
             ex.printStackTrace();

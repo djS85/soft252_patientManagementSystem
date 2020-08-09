@@ -13,6 +13,7 @@ import static panels.DoctorSystemMain.DoctorPanelType.APPOINTMENT_NOTES;
 import static panels.DoctorSystemMain.DoctorPanelType.CREATE_PRESCRIPTION;
 import static panels.DoctorSystemMain.DoctorPanelType.MAKE_APPOINTMENT;
 import static panels.DoctorSystemMain.DoctorPanelType.VIEW_APPOINTMENTS;
+import static panels.DoctorSystemMain.DoctorPanelType.VIEW_PATIENT_HISTORY;
 import patientmanagementsystem.doctor_system.Doctor;
 
 /**
@@ -31,6 +32,7 @@ public class DoctorSystemMain extends javax.swing.JPanel {
     private DoctorViewAppointments doctorViewAppointments;
     private DoctorAppointmentNotes doctorAppointmentNotes;
     private DoctorCreatePrescription doctorCreatePrescription;
+    private ViewPatientHistory viewPatientHistory;
     
     private Doctor user;
 
@@ -38,7 +40,8 @@ public class DoctorSystemMain extends javax.swing.JPanel {
         MAKE_APPOINTMENT,
         VIEW_APPOINTMENTS,
         APPOINTMENT_NOTES,
-        CREATE_PRESCRIPTION
+        CREATE_PRESCRIPTION,
+        VIEW_PATIENT_HISTORY
     }
     
     public DoctorSystemMain(ViewMain _parent, Doctor _user) {
@@ -61,6 +64,7 @@ public class DoctorSystemMain extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(600, 600));
         setMinimumSize(new java.awt.Dimension(600, 600));
@@ -98,6 +102,13 @@ public class DoctorSystemMain extends javax.swing.JPanel {
             }
         });
 
+        jButton5.setText("View Patient History");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,7 +120,8 @@ public class DoctorSystemMain extends javax.swing.JPanel {
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(232, 232, 232))
         );
         layout.setVerticalGroup(
@@ -124,6 +136,8 @@ public class DoctorSystemMain extends javax.swing.JPanel {
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton5)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -148,6 +162,11 @@ public class DoctorSystemMain extends javax.swing.JPanel {
         // TODO add your handling code here:
         setPanel(CREATE_PRESCRIPTION);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        setPanel(VIEW_PATIENT_HISTORY);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     public void setPanel(DoctorPanelType _panelType) {
         
@@ -188,6 +207,15 @@ public class DoctorSystemMain extends javax.swing.JPanel {
                 }
                 break;
                 
+            case VIEW_PATIENT_HISTORY:
+                if ( viewPatientHistory == null ) {
+                    viewPatientHistory = new ViewPatientHistory(user, this);
+                    parent.setContentPane(viewPatientHistory);
+                } else {
+                    parent.setContentPane(viewPatientHistory);
+                }
+                break;
+                
             default:
                 break;
                 
@@ -211,6 +239,7 @@ public class DoctorSystemMain extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

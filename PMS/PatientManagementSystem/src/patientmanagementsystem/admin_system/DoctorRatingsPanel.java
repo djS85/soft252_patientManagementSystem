@@ -213,7 +213,7 @@ public class DoctorRatingsPanel extends javax.swing.JPanel {
         
         if ( ratings.size() > 0 ) {
             for ( DoctorRating r : ratings ) {
-                jTextArea1.append("Dr. " + doctorSurname + "\n" + "rating : " + r.getRating() + "\n" + "feedback : " + r.getFeedback() + "\n\n");
+                jTextArea1.append("Dr. " + doctorSurname + "\n" + "rating : " + r.getRating() + "/10" + "\n" + "feedback : " + r.getFeedback() + "\n\n");
             }
         } else if ( ratings.size() <= 0 ) {
             jTextArea1.setText("Dr. " + doctorSurname + " currently has no ratings.");
@@ -229,7 +229,12 @@ public class DoctorRatingsPanel extends javax.swing.JPanel {
         int rating = Integer.valueOf(jTextField2.getText());
         String feedback = textArea1.getText().toString();
         
-        patient.rateDoctor(doctorSurname, docID, feedback, rating);
+        if ( patient != null ) {
+            patient.rateDoctor(doctorSurname, docID, feedback, rating);
+        } else {
+            textArea1.setText("You must be a patient to rate doctors.");
+        }
+        
         
     }//GEN-LAST:event_jButton2ActionPerformed
 

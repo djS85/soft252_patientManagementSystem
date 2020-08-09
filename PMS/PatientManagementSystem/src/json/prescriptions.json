@@ -19,5 +19,12 @@
     "dosage": "1 Per week",
     "patientID": "P2345",
     "doctorID": "D6666"
+  },
+  {
+    "medicine": "Aspirin",
+    "quantity": 24,
+    "dosage": "1 per day",
+    "patientID": "P6666",
+    "doctorID": "D6666"
   }
 ]

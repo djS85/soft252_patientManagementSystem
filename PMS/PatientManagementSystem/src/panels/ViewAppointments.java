@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import patientmanagementsystem.doctor_system.Appointment;
 import patientmanagementsystem.doctor_system.Appointments;
 import patientmanagementsystem.patient_system.Patient;
+import utils.Files;
 
 /**
  *
@@ -24,12 +25,6 @@ public class ViewAppointments extends javax.swing.JPanel {
     /**
      * Creates new form ViewAppointments
      */
-    
-    // Laptop
-    //    protected final String appointmentsPath = "C:\\Users\\djs85\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\appointments.json";
-    
-    // Desktop
-    protected final String appointmentsPath = "C:\\Users\\Dyn\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\appointments.json";
     
     private Patient patient;
     private PatientSystemMain parent;
@@ -83,7 +78,7 @@ public class ViewAppointments extends javax.swing.JPanel {
             gson = new GsonBuilder().setPrettyPrinting().create();
         }
         
-        try ( FileReader fr = new FileReader(appointmentsPath) ) {
+        try ( FileReader fr = new FileReader(Files.APPOINTMENTS_PATH) ) {
             appointments = gson.fromJson(fr, new TypeToken<ArrayList<Appointment>>() {}.getType());
         } catch (IOException ex) {
             ex.printStackTrace();
