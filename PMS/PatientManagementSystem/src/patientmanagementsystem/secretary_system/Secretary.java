@@ -208,6 +208,4 @@ public class Secretary extends User {
         this.medicines = medicines;
     }
     
-    
-    
 }

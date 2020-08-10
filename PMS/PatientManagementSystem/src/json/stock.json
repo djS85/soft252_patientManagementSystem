@@ -10,5 +10,13 @@
   {
     "medicineName": "Aspirin",
     "quantityInStock": 500
+  },
+  {
+    "medicineName": "Salbutamol Inhaler",
+    "quantityInStock": 200
+  },
+  {
+    "medicineName": "Becotide Inhaler",
+    "quantityInStock": 200
   }
 ]

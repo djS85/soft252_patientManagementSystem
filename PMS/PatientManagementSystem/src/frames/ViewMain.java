@@ -26,6 +26,7 @@ import patientmanagementsystem.admin_system.EditDoctorPanel;
 import patientmanagementsystem.doctor_system.Doctor;
 import patientmanagementsystem.patient_system.Patient;
 import patientmanagementsystem.secretary_system.Secretary;
+import utils.Files;
 
 /**
  *
@@ -58,6 +59,7 @@ public class ViewMain extends javax.swing.JFrame {
     
     public ViewMain() {
         
+        Files.initPaths(); // very important for filepaths!!!
         initComponents();
         
         this.setBounds(100, 100, 600, 600);
