@@ -16,6 +16,7 @@ public class Doctor extends User {
     
     public Doctor() {
         this.gson = new GsonBuilder().setPrettyPrinting().create();
+        
     }
     
     public void createAppointment(String doctor, String patientID, String patientFirstname, String patientSurname, String date, String doctorNotes) {

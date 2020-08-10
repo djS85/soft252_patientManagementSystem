@@ -5,7 +5,7 @@
   },
   {
     "medicineName": "Amoxicillin",
-    "quantityInStock": 226
+    "quantityInStock": 300
   },
   {
     "medicineName": "Aspirin",
@@ -13,10 +13,30 @@
   },
   {
     "medicineName": "Salbutamol Inhaler",
-    "quantityInStock": 200
+    "quantityInStock": 270
   },
   {
     "medicineName": "Becotide Inhaler",
-    "quantityInStock": 200
+    "quantityInStock": 280
+  },
+  {
+    "medicineName": "Insulin",
+    "quantityInStock": 280
+  },
+  {
+    "medicineName": "Morphine",
+    "quantityInStock": 125
+  },
+  {
+    "medicineName": "Co-codamol",
+    "quantityInStock": 760
+  },
+  {
+    "medicineName": "Lisinopril",
+    "quantityInStock": 340
+  },
+  {
+    "medicineName": "Metformin Hydrochloride",
+    "quantityInStock": 400
   }
 ]

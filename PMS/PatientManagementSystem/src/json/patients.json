@@ -6,6 +6,24 @@
     "surname": "Southern",
     "password": "pwd",
     "age": 34,
+    "accountApproved": true
+  },
+  {
+    "userID": "P7777",
+    "address": "123 Some St, Somewhere, Aplace",
+    "firstname": "Andrew",
+    "surname": "Person",
+    "password": "pwd",
+    "age": 54,
+    "accountApproved": false
+  },
+  {
+    "userID": "P8888",
+    "address": "67 Some St, Somewhere, Aplace",
+    "firstname": "Hugo",
+    "surname": "Mongoose",
+    "password": "pwd",
+    "age": 67,
     "accountApproved": false
   }
 ]
