@@ -14,11 +14,8 @@ public abstract class User {
     
     private boolean accountApproved;
     
-    
-
     public User() {
         this.accountApproved = false;
-        
     }
     
     // getters and setters.

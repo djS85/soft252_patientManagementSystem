@@ -32,7 +32,7 @@ public class DoctorSystemMain extends javax.swing.JPanel {
     private DoctorViewAppointments doctorViewAppointments;
     private DoctorAppointmentNotes doctorAppointmentNotes;
     private DoctorCreatePrescription doctorCreatePrescription;
-    private ViewPatientHistory viewPatientHistory;
+    private DoctorViewPatientHistory doctorViewPatientHistory;
     
     private Doctor user;
 
@@ -208,11 +208,11 @@ public class DoctorSystemMain extends javax.swing.JPanel {
                 break;
                 
             case VIEW_PATIENT_HISTORY:
-                if ( viewPatientHistory == null ) {
-                    viewPatientHistory = new ViewPatientHistory(user, this);
-                    parent.setContentPane(viewPatientHistory);
+                if ( doctorViewPatientHistory == null ) {
+                    doctorViewPatientHistory = new DoctorViewPatientHistory(this, user);
+                    parent.setContentPane(doctorViewPatientHistory);
                 } else {
-                    parent.setContentPane(viewPatientHistory);
+                    parent.setContentPane(doctorViewPatientHistory);
                 }
                 break;
                 

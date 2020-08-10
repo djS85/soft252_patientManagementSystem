@@ -20,6 +20,10 @@ public class Patient extends User {
     
     protected Gson gson;
     
+    public Patient() {
+        
+    }
+    
     public Patient(String _firstname, String _lastname, String _address, int _age) {
         this.setFirstname(_firstname);
         this.setSurname(_lastname);
@@ -44,9 +48,6 @@ public class Patient extends User {
         writeRatings(doctorRatings);
         
     }
-    
-    public void viewHistory() {}
-    
     
 //    public void requestAccountDeletion() {}
 

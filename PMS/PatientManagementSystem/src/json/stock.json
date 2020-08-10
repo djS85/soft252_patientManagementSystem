@@ -1,0 +1,14 @@
+[
+  {
+    "medicineName": "Penicillin",
+    "quantityInStock": 250
+  },
+  {
+    "medicineName": "Amoxicillin",
+    "quantityInStock": 226
+  },
+  {
+    "medicineName": "Aspirin",
+    "quantityInStock": 500
+  }
+]

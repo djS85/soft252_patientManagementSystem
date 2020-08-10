@@ -1,11 +1,11 @@
 [
   {
     "userID": "P6666",
-    "address": "123 Looney St, Toon Town, Hollywood",
-    "firstname": "Bugs",
-    "surname": "Bunny",
+    "address": "226A Albert Rd, Devonport, Plymouth",
+    "firstname": "Dan",
+    "surname": "Southern",
     "password": "pwd",
-    "age": 78,
+    "age": 34,
     "accountApproved": false
   }
 ]

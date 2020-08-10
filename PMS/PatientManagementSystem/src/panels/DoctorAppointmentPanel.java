@@ -6,6 +6,7 @@
 package panels;
 
 import patientmanagementsystem.doctor_system.Doctor;
+import patientmanagementsystem.secretary_system.Secretary;
 
 /**
  *
@@ -17,12 +18,23 @@ public class DoctorAppointmentPanel extends javax.swing.JPanel {
      * Creates new form DoctorAppointmentPanel
      */
     
-    private DoctorSystemMain parent;
-    private Doctor user;
+    private DoctorSystemMain doctorMain;
+    private Doctor doctor;
     
-    public DoctorAppointmentPanel(DoctorSystemMain _parent, Doctor _user) {
-        this.parent = _parent;
-        this.user = _user;
+    private SecretarySystemMain secMain;
+    private Secretary sec;
+    
+    public DoctorAppointmentPanel(DoctorSystemMain _doctorMain, Doctor _doctor) {
+        this.doctorMain = _doctorMain;
+        this.doctor = _doctor;
+        this.sec = null;
+        initComponents();
+    }
+    
+    public DoctorAppointmentPanel(SecretarySystemMain _secMain, Secretary _sec) {
+        this.sec = _sec;
+        this.secMain = _secMain;
+        this.doctor = null;
         initComponents();
     }
 
@@ -102,32 +114,36 @@ public class DoctorAppointmentPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(226, 226, 226))
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                .addComponent(jTextField2)
-                                .addComponent(jTextField3))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel7))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                        .addComponent(jTextField2)
+                                        .addComponent(jTextField3))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton1)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jScrollPane1)
+                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane1)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton2))))
+                        .addContainerGap()
+                        .addComponent(jButton2)))
                 .addContainerGap(170, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -160,9 +176,9 @@ public class DoctorAppointmentPanel extends javax.swing.JPanel {
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(173, 173, 173)
                 .addComponent(jButton2)
-                .addGap(178, 178, 178))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -175,8 +191,12 @@ public class DoctorAppointmentPanel extends javax.swing.JPanel {
         String doctorNotes = jTextArea1.getText().toString();
         String patientID = jTextField5.getText().toString();
         
-        this.user.createAppointment(doctor, patientID, patientFirstname, patientSurname, date, doctorNotes);
-        
+        if ( this.doctor != null ) {
+            this.doctor.createAppointment(doctor, patientID, patientFirstname, patientSurname, date, doctorNotes);
+        }
+        else if ( this.sec != null ) {
+            this.sec.createAppointment(doctor, patientID, patientFirstname, patientSurname, date, doctorNotes);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
@@ -185,7 +205,9 @@ public class DoctorAppointmentPanel extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        parent.setHomePanel();
+        if ( this.doctor != null ) {
+            this.doctorMain.setHomePanel();
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

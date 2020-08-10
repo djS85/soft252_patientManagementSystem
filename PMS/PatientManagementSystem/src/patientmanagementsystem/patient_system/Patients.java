@@ -19,7 +19,11 @@ public class Patients {
     }
     
     public void addPatient(Patient _patient) {
-        patients.add(_patient);
+        this.patients.add(_patient);
+    }
+    
+    public void removePatient(Patient _patient) {
+        this.patients.remove(_patient);
     }
 
 }

@@ -27,13 +27,17 @@ public class PatientHistory {
         this.prescriptions = new Prescriptions();
     }
     
+    public PatientHistory() {
+        gson = new GsonBuilder().setPrettyPrinting().create();
+        this.appointments = new Appointments();
+        this.prescriptions = new Prescriptions();
+    }
     
     public void initPatientHistory() {
         initAppointments();
         initPrescriptions();
     }
     
-
     public void initAppointments() {
         
         if ( gson == null ) {

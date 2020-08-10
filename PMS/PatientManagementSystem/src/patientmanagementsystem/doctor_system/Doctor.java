@@ -59,8 +59,6 @@ public class Doctor extends User {
         writePrescriptions(prescriptions);
         
     }
-
-//    public void viewPatientHistory() {}
     
     public ArrayList<Appointment> getAppointments() {
         

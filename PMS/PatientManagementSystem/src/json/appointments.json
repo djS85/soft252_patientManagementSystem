@@ -26,5 +26,12 @@
     "patientID": "P6666",
     "date": "20/02/2020",
     "notes": "has covid-19 symptoms"
+  },
+  {
+    "patientFullname": "Dan Southern",
+    "doctor": "Zaius",
+    "patientID": "P6666",
+    "date": "11/08/2020",
+    "notes": "has syphillis. : Dr. Southern has been prescribed peniciilin"
   }
 ]

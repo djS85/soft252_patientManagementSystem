@@ -26,5 +26,12 @@
     "dosage": "1 per day",
     "patientID": "P6666",
     "doctorID": "D6666"
+  },
+  {
+    "medicine": "Penicillin",
+    "quantity": 24,
+    "dosage": "1 per day",
+    "patientID": "P6666",
+    "doctorID": "D6666"
   }
 ]

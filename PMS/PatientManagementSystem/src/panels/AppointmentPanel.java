@@ -6,6 +6,7 @@
 package panels;
 
 import patientmanagementsystem.patient_system.Patient;
+import patientmanagementsystem.secretary_system.Secretary;
 
 /**
  *
@@ -18,11 +19,11 @@ public class AppointmentPanel extends javax.swing.JPanel {
      */
     
     private Patient patient;
-    private PatientSystemMain parent;
+    private PatientSystemMain patientMain;
     
-    public AppointmentPanel(Patient _patient, PatientSystemMain _parent) {
+    public AppointmentPanel(Patient _patient, PatientSystemMain _patientMain) {
         this.patient = _patient;
-        this.parent = _parent;
+        this.patientMain = _patientMain;
         initComponents();
     }
 
@@ -161,7 +162,7 @@ public class AppointmentPanel extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        parent.setHomePanel();
+        patientMain.setHomePanel();
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
