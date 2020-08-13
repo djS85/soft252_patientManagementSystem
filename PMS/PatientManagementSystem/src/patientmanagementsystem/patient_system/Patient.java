@@ -32,6 +32,8 @@ public class Patient extends User {
         
     }
     
+    // adds rating to DoctorRatings.class ArrayList for serialization to json file
+    // doctor_ratings.json.
     public void rateDoctor(String doctorSurname, String docID, String feedback, int rating) {
         
         DoctorRating doctorRating = new DoctorRating();
@@ -49,8 +51,8 @@ public class Patient extends User {
         
     }
     
-//    public void requestAccountDeletion() {}
-
+    
+    // creates an appointment to approved by a secretary user.
     public void requestAppointment(String patientID, String patientFullname, String doctor, String date, String notes) {
         
         Appointment a = new Appointment();
@@ -69,6 +71,7 @@ public class Patient extends User {
         
     }
     
+    // de-serializes all appointments from the json file to ArrayList.
     public ArrayList<Appointment> getAppointments() {
         
         ArrayList<Appointment> appointments = new ArrayList<>();
@@ -87,6 +90,7 @@ public class Patient extends User {
     
     }
     
+    // serializes to json file appointments.json.
     public void writeAppointments(Appointments _appointments) {
         
         if ( gson == null ) {
@@ -101,6 +105,7 @@ public class Patient extends User {
         
     }
     
+    // de-serializes all doctor ratings from the json file to ArrayList.
     public ArrayList<DoctorRating> getDoctorRatings() {
         
         ArrayList<DoctorRating> doctorRatings = new ArrayList<>();
@@ -119,6 +124,7 @@ public class Patient extends User {
         
     }
     
+    // serializes to json file doctor_ratings.json.
     public void writeRatings(DoctorRatings _doctorRatings) {
         // its all about the way this part is setup with filewriter/reader.
         

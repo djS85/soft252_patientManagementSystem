@@ -31,6 +31,7 @@ public class PatientSystemMain extends javax.swing.JPanel {
     protected ViewMain parent;
     protected Patient user;
     
+    // enum for storing panel types.
     public enum PatientPanelType {
         
         RATE_DOCTOR,
@@ -47,12 +48,16 @@ public class PatientSystemMain extends javax.swing.JPanel {
         
         String patientName = user.getFullName();
         
+        // set patient name on screen, from the user passed into contructor.
         jLabel2.setText("Welcome " + patientName);
         
     }
     
+    // this sets the panel from the users home page, users can only access certain functions.
     public void setPanel(PatientPanelType panelType) {
     
+        // if the panel hasn't been initialised, initialise it and set it as the
+        // content pane, then redraw the JFRame.
         switch (panelType) {
             
             case RATE_DOCTOR:
@@ -104,6 +109,7 @@ public class PatientSystemMain extends javax.swing.JPanel {
         
     }
     
+    // returns to the home panel.
     public void setHomePanel() {
         parent.setPanel(PanelType.PATIENT_MAIN);
     }
@@ -199,21 +205,25 @@ public class PatientSystemMain extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    // doctor ratings button.
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.setPanel(RATE_DOCTOR);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
+    // book appointment button.
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         this.setPanel(BOOK_APPOINTMENT);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    // view appointments button.
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.setPanel(VIEW_APPOINTMENTS);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    // view patient history button.
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         this.setPanel(VIEW_HISTORY);

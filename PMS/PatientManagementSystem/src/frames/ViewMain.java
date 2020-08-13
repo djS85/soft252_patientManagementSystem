@@ -56,6 +56,8 @@ public class ViewMain extends javax.swing.JFrame {
     protected Secretary loggedInSec;
     protected Doctor loggedInDoctor;
     
+    // ViewMain class is the main JFrame which is responsible for each users
+    // home panel.
     
     public ViewMain() {
         
@@ -171,6 +173,7 @@ public class ViewMain extends javax.swing.JFrame {
         });
     }
 
+    // sets the panel and redraws the frame. 
     public void setPanel(PanelType _panelType) {
         
         switch (_panelType) {
@@ -250,6 +253,7 @@ public class ViewMain extends javax.swing.JFrame {
     
     }
     
+    // finds all input fields on a panel and clears them.
     public void clearFields() {
         
         Container container = this.getContentPane();
@@ -269,6 +273,7 @@ public class ViewMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
+    // setLoggedIn?????? sets the type of user for the session.
     public void setLoggedInPatient(Patient patient) {
         this.loggedInPatient = patient;
     }
@@ -277,15 +282,15 @@ public class ViewMain extends javax.swing.JFrame {
         this.loggedInAdmin = admin;
     }
     
-    public User getUser() {
-        return this.loggedInUser;
-    }
-
     public void setLoggedInDoctor(Doctor doctor) {
         this.loggedInDoctor = doctor;
     }
 
     public void setLoggedInSecretary(Secretary secretary) {
         this.loggedInSec = secretary;
+    }
+    
+    public User getUser() {
+        return this.loggedInUser;
     }
 }

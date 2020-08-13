@@ -32,6 +32,7 @@ public class SecretarySystemMain extends javax.swing.JPanel {
     private ViewMain parent;
     private Secretary user;
     
+    // enum for storing panel types.
     public enum SecPanelType {
         APPROVE_ACCOUNTS,
         CREATE_APPOINTMENT,
@@ -136,33 +137,41 @@ public class SecretarySystemMain extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    // approve account panel button.
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         setPanel(APPROVE_ACCOUNTS);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    // create appointment panel button.
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         setPanel(CREATE_APPOINTMENT);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    // dispense medication panel button.
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         setPanel(DISPENSE_MEDS);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    // remove patient panel button.
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         setPanel(REMOVE_PATIENT);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    // order medicine panel button.
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         setPanel(ORDER_STOCK);
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    // this sets the panel from the users home page, users can only access certain functions.
     public void setPanel(SecPanelType _panelType) {
         
+        // if the panel hasn't been initialised, initialise it and set it as the
+        // content pane, then redraw the JFRame.
         switch (_panelType) {
             
             case APPROVE_ACCOUNTS:
@@ -220,6 +229,7 @@ public class SecretarySystemMain extends javax.swing.JPanel {
     
     }
     
+    // returns to home panel.
     public void setHomePanel() {
         parent.setPanel(PanelType.SEC_MAIN);
     }

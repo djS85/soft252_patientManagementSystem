@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Appointments {
     
+    // class is used to store objects for serialization/deserialization.
+    
     private ArrayList<Appointment> appointments;
     
     public Appointments() {

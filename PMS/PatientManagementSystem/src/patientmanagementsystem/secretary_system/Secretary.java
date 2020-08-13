@@ -34,6 +34,8 @@ public class Secretary extends User {
         this.patients.setPatients(getPatients());
     }
     
+    // creates an appointment for a patient and adds it to the Appointments.class ArrayList
+    // for serialization to the json file appointments.json.
     public void createAppointment(String doctor, String patientID, String patientFirstname, String patientSurname, String date, String doctorNotes) {
         
         Appointment app = new Appointment();
@@ -52,6 +54,8 @@ public class Secretary extends User {
         
     }
     
+    // checks if medicine is in stock or not, if it is quantity is added to stock quantity,
+    // if not medicine is added to medicines.json
     public void orderMedicine(String _medicineName, int _quantity) {
         
         String stockMed = null;
@@ -85,7 +89,7 @@ public class Secretary extends User {
         
     }
     
-    
+    // removes a patient from the system.
     public void removePatient(String _patientID) {
     
         for ( int i = 0; i < this.patients.getPatients().size(); i++ ) {
@@ -96,6 +100,7 @@ public class Secretary extends User {
     
     }
     
+    // de-serializes all appointments from the json file to ArrayList.
     public ArrayList<Appointment> getAppointments() {
         
         ArrayList<Appointment> appointments = new ArrayList<>();
@@ -114,6 +119,7 @@ public class Secretary extends User {
     
     }
     
+    // serializes to json file appointments.json.
     public void writeAppointments(Appointments _appointments) {
         
         if ( gson == null ) {
@@ -128,6 +134,7 @@ public class Secretary extends User {
         
     }
     
+    // serializes to json file medicines.json.
     public void writeMedicines(Medicines _medicines) {
         
         if ( gson == null ) {
@@ -142,6 +149,7 @@ public class Secretary extends User {
         
     }
     
+    // serializes to json file patients.json.
     public void writePatients(Patients patients) {
         // its all about the way this part is setup with filewriter/reader.
         try ( FileWriter fw = new FileWriter(Files.PATIENTS_PATH) ) {          
@@ -151,6 +159,7 @@ public class Secretary extends User {
         }
     }
     
+    // de-serializes all patients from the json file to ArrayList.
     public ArrayList<Patient> getPatients() {
         
         ArrayList<Patient> _patients = new ArrayList<>();
@@ -167,6 +176,7 @@ public class Secretary extends User {
     
     }
     
+    // serializes to json file medicines.json.
     public Medicines getMedicines() {
         
         ArrayList<Medicine> _medicines = new ArrayList<>();

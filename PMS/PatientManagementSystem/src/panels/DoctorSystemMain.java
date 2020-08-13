@@ -36,6 +36,7 @@ public class DoctorSystemMain extends javax.swing.JPanel {
     
     private Doctor user;
 
+    // enum for storing panel types.
     public enum DoctorPanelType {
         MAKE_APPOINTMENT,
         VIEW_APPOINTMENTS,
@@ -142,34 +143,42 @@ public class DoctorSystemMain extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    // create appointment button.
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         setPanel(MAKE_APPOINTMENT);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    // view appointment button.
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         setPanel(VIEW_APPOINTMENTS);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    // appointment notes button.
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         setPanel(APPOINTMENT_NOTES);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    // create prescription button.
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         setPanel(CREATE_PRESCRIPTION);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    // view patient history button.
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         setPanel(VIEW_PATIENT_HISTORY);
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    // this sets the panel from the users home page, users can only access certain functions.
     public void setPanel(DoctorPanelType _panelType) {
         
+        // if the panel hasn't been initialised, initialise it and set it as the
+        // content pane, then redraw the JFRame.
         switch (_panelType) {
             case MAKE_APPOINTMENT:
                     if ( doctorAppointmentPanel == null ) {
@@ -226,6 +235,7 @@ public class DoctorSystemMain extends javax.swing.JPanel {
         
     }
     
+    // returns to the home panel.
     public void setHomePanel() {
         parent.setPanel(PanelType.DOCTOR_MAIN);
     }

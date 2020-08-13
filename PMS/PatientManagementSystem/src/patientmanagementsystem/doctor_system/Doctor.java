@@ -19,6 +19,8 @@ public class Doctor extends User {
         
     }
     
+    // creates an appointment for a patient and adds it to the Appointments.class ArrayList
+    // for serialization to the json file appointments.json.
     public void createAppointment(String doctor, String patientID, String patientFirstname, String patientSurname, String date, String doctorNotes) {
         
         Appointment app = new Appointment();
@@ -41,6 +43,8 @@ public class Doctor extends User {
         
     }
     
+    // creates a prescription for a patient and adds it to the Prescriptions.class ArrayList for serialization
+    // to json file prescriptions.json
     public void createPrescription(String _doctorID, String _patientID, String _medicine, String _dosage, int _quantity) {
         
         Prescription prescription = new Prescription();
@@ -61,6 +65,7 @@ public class Doctor extends User {
         
     }
     
+    // de-serializes all appointments from the json file to ArrayList.
     public ArrayList<Appointment> getAppointments() {
         
         ArrayList<Appointment> appointments = new ArrayList<>();
@@ -79,6 +84,7 @@ public class Doctor extends User {
     
     }
     
+    // serializes to json file appointments.json.
     public void writeAppointments(Appointments _appointments) {
         
         if ( gson == null ) {
@@ -93,6 +99,7 @@ public class Doctor extends User {
         
     }
     
+    // de-serializes all prescriptions from the json file to ArrayList.
     public ArrayList<Prescription> getPrescriptions() {
         
         ArrayList<Prescription> prescriptions = new ArrayList<>();
@@ -111,7 +118,7 @@ public class Doctor extends User {
     
     }
     
-    
+    // serializes to json file prescriptions.json.
     public void writePrescriptions(Prescriptions _prescriptions) {
         
         if ( gson == null ) {

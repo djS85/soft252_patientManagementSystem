@@ -2,6 +2,8 @@ package patientmanagementsystem.doctor_system;
 
 public class Appointment {
     
+    // POJO class for serialization/deserialization from json.
+    
     private String patientFullname;
     private String doctor;
     private String patientID;

@@ -2,6 +2,8 @@ package patientmanagementsystem.secretary_system;
 
 public class Medicine {
     
+    // POJO class for serialization/deserialization from json.
+    
     private String medicineName;
     private int quantityInStock;
     

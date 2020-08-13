@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Patients {
     
+    // class is used to store objects for serialization/deserialization.
+    
     protected ArrayList<Patient> patients;
     
     public Patients() {

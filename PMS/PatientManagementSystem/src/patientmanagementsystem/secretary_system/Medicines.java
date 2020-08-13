@@ -3,6 +3,8 @@ package patientmanagementsystem.secretary_system;
 import java.util.ArrayList;
 
 public class Medicines {
+    
+    // class is used to store objects for serialization/deserialization.
 
     private ArrayList<Medicine> medicines;
     

@@ -2,6 +2,7 @@ package patientmanagementsystem.doctor_system;
 
 public class Prescription {
 
+    // POJO class for serialization/deserialization from json.
     
     private String medicine;
     private int quantity;

@@ -26,6 +26,8 @@ public class Administrator extends User {
         doctors = new Doctors();
     }
     
+    // adds a doctor to the ArrayList in Doctors.class, then writes the ArrayList to the
+    // doctors.json file.
     public void addDoctorAccount(String firstname, String surname, String address, int age, String password) {
         
         try ( FileReader fr = new FileReader(Files.DOCTORS_PATH) ) {            
@@ -49,6 +51,7 @@ public class Administrator extends User {
     
     }
     
+    // function for writing Doctors.class to the json file doctors.json.
     public void writeDoctors(Doctors _doctors) {
         // its all about the way this part is setup with filewriter/reader.
         try ( FileWriter fw = new FileWriter(Files.DOCTORS_PATH) ) {          
@@ -58,11 +61,13 @@ public class Administrator extends User {
         }
     }
     
+    // generates a userID for a doctor, with a "D" prefix.
     public void setDoctorUserID(Doctor _doctor) {
         r = new Random();
         _doctor.setUserID("D" + r.nextInt(10000));
     }
     
+    // removes a doctor account from json file doctors.json, by doctors ID number.
     public void removeDoctorAccount(String _docID) {
         
         try ( FileReader fr = new FileReader(Files.DOCTORS_PATH) ) {            

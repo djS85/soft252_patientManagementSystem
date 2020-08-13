@@ -27,6 +27,7 @@ public class AdminSystemMain extends javax.swing.JPanel {
     private EditDoctorPanel editDoctorPanel;
     private DoctorRatingsPanel doctorRatingsPanel;
     
+    // enum for storing panel types.
     public enum AdminPanelType {
         
         EDIT_DOCTOR,
@@ -103,19 +104,24 @@ public class AdminSystemMain extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    // brings up remove/add doctor panel.
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.setPanel(AdminPanelType.EDIT_DOCTOR);
        
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    // brings up the doctor ratings panel.
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.setPanel(AdminPanelType.DOCTOR_RATINGS);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    // this sets the panel from the users home page, users can only access certain functions.
     public void setPanel(AdminPanelType adminPanel) {
         
+        // if the panel hasn't been initialised, initialise it and set it as the
+        // content pane, then redraw the JFRame.
         switch (adminPanel) {
             
             case EDIT_DOCTOR:
@@ -147,6 +153,7 @@ public class AdminSystemMain extends javax.swing.JPanel {
     
     }
     
+    // returns to the home panel.
     public void setHomePanel() {
         parent.setPanel(PanelType.ADMIN_MAIN);
     }

@@ -2,6 +2,8 @@ package patientmanagementsystem.doctor_system;
 
 public class DoctorRating {
     
+    // POJO class for serialization/deserialization from json.
+    
     private String doctorSurname;
     private String doctorID;
     private int rating;
