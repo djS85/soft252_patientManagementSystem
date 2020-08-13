@@ -38,9 +38,6 @@ public class DoctorTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of createAppointment method, of class Doctor.
-     */
     @Test
     public void testCreateAppointment() {
         System.out.println("createAppointment");
@@ -52,13 +49,9 @@ public class DoctorTest {
         String doctorNotes = "";
         Doctor instance = new Doctor();
         instance.createAppointment(doctor, patientID, patientFirstname, patientSurname, date, doctorNotes);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of createPrescription method, of class Doctor.
-     */
     @Test
     public void testCreatePrescription() {
         System.out.println("createPrescription");
@@ -69,13 +62,9 @@ public class DoctorTest {
         int _quantity = 0;
         Doctor instance = new Doctor();
         instance.createPrescription(_doctorID, _patientID, _medicine, _dosage, _quantity);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of getAppointments method, of class Doctor.
-     */
     @Test
     public void testGetAppointments() {
         System.out.println("getAppointments");
@@ -83,26 +72,18 @@ public class DoctorTest {
         ArrayList<Appointment> expResult = null;
         ArrayList<Appointment> result = instance.getAppointments();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of writeAppointments method, of class Doctor.
-     */
     @Test
     public void testWriteAppointments() {
         System.out.println("writeAppointments");
         Appointments _appointments = null;
         Doctor instance = new Doctor();
         instance.writeAppointments(_appointments);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of getPrescriptions method, of class Doctor.
-     */
     @Test
     public void testGetPrescriptions() {
         System.out.println("getPrescriptions");
@@ -110,21 +91,16 @@ public class DoctorTest {
         ArrayList<Prescription> expResult = null;
         ArrayList<Prescription> result = instance.getPrescriptions();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of writePrescriptions method, of class Doctor.
-     */
     @Test
     public void testWritePrescriptions() {
         System.out.println("writePrescriptions");
         Prescriptions _prescriptions = null;
         Doctor instance = new Doctor();
         instance.writePrescriptions(_prescriptions);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
     
 }

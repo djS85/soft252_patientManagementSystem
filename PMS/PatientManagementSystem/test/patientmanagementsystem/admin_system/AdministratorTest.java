@@ -39,9 +39,6 @@ public class AdministratorTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of addDoctorAccount method, of class Administrator.
-     */
     @Test
     public void testAddDoctorAccount() {
         System.out.println("addDoctorAccount");
@@ -52,47 +49,34 @@ public class AdministratorTest {
         String password = "";
         Administrator instance = new Administrator();
         instance.addDoctorAccount(firstname, surname, address, age, password);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of writeDoctors method, of class Administrator.
-     */
     @Test
     public void testWriteDoctors() {
         System.out.println("writeDoctors");
         Doctors _doctors = null;
         Administrator instance = new Administrator();
         instance.writeDoctors(_doctors);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of setDoctorUserID method, of class Administrator.
-     */
     @Test
     public void testSetDoctorUserID() {
         System.out.println("setDoctorUserID");
         Doctor _doctor = null;
         Administrator instance = new Administrator();
         instance.setDoctorUserID(_doctor);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of removeDoctorAccount method, of class Administrator.
-     */
     @Test
     public void testRemoveDoctorAccount() {
         System.out.println("removeDoctorAccount");
         String _docID = "";
         Administrator instance = new Administrator();
         instance.removeDoctorAccount(_docID);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
     
 }

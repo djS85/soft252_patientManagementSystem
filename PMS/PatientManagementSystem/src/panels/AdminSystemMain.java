@@ -120,7 +120,7 @@ public class AdminSystemMain extends javax.swing.JPanel {
             
             case EDIT_DOCTOR:
                 if ( editDoctorPanel == null ) {
-                    editDoctorPanel = new EditDoctorPanel(user);
+                    editDoctorPanel = new EditDoctorPanel(user, this);
                     parent.setContentPane(editDoctorPanel);
                 } else {
                     parent.setContentPane(editDoctorPanel);
@@ -129,7 +129,7 @@ public class AdminSystemMain extends javax.swing.JPanel {
                 
             case DOCTOR_RATINGS:
                 if ( doctorRatingsPanel == null ) {
-                    doctorRatingsPanel = new DoctorRatingsPanel(user);
+                    doctorRatingsPanel = new DoctorRatingsPanel(user, this);
                     parent.setContentPane(doctorRatingsPanel);
                 } else {
                     parent.setContentPane(doctorRatingsPanel);
@@ -145,6 +145,14 @@ public class AdminSystemMain extends javax.swing.JPanel {
         parent.repaint();
         parent.revalidate();
     
+    }
+    
+    public void setHomePanel() {
+        parent.setPanel(PanelType.ADMIN_MAIN);
+    }
+    
+    public void clearFields() {
+        parent.clearFields();
     }
     
     

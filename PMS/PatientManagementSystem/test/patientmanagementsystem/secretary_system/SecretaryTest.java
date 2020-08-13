@@ -43,9 +43,6 @@ public class SecretaryTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of createAppointment method, of class Secretary.
-     */
     @Test
     public void testCreateAppointment() {
         System.out.println("createAppointment");
@@ -57,13 +54,9 @@ public class SecretaryTest {
         String doctorNotes = "";
         Secretary instance = new Secretary();
         instance.createAppointment(doctor, patientID, patientFirstname, patientSurname, date, doctorNotes);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of orderMedicine method, of class Secretary.
-     */
     @Test
     public void testOrderMedicine() {
         System.out.println("orderMedicine");
@@ -71,26 +64,18 @@ public class SecretaryTest {
         int _quantity = 0;
         Secretary instance = new Secretary();
         instance.orderMedicine(_medicineName, _quantity);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of removePatient method, of class Secretary.
-     */
     @Test
     public void testRemovePatient() {
         System.out.println("removePatient");
         String _patientID = "";
         Secretary instance = new Secretary();
         instance.removePatient(_patientID);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of getAppointments method, of class Secretary.
-     */
     @Test
     public void testGetAppointments() {
         System.out.println("getAppointments");
@@ -98,52 +83,36 @@ public class SecretaryTest {
         ArrayList<Appointment> expResult = null;
         ArrayList<Appointment> result = instance.getAppointments();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of writeAppointments method, of class Secretary.
-     */
     @Test
     public void testWriteAppointments() {
         System.out.println("writeAppointments");
         Appointments _appointments = null;
         Secretary instance = new Secretary();
         instance.writeAppointments(_appointments);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of writeMedicines method, of class Secretary.
-     */
     @Test
     public void testWriteMedicines() {
         System.out.println("writeMedicines");
         Medicines _medicines = null;
         Secretary instance = new Secretary();
         instance.writeMedicines(_medicines);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of writePatients method, of class Secretary.
-     */
     @Test
     public void testWritePatients() {
         System.out.println("writePatients");
         Patients patients = null;
         Secretary instance = new Secretary();
         instance.writePatients(patients);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of getPatients method, of class Secretary.
-     */
     @Test
     public void testGetPatients() {
         System.out.println("getPatients");
@@ -151,13 +120,9 @@ public class SecretaryTest {
         ArrayList<Patient> expResult = null;
         ArrayList<Patient> result = instance.getPatients();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of getMedicines method, of class Secretary.
-     */
     @Test
     public void testGetMedicines() {
         System.out.println("getMedicines");
@@ -165,13 +130,9 @@ public class SecretaryTest {
         Medicines expResult = null;
         Medicines result = instance.getMedicines();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of Patients method, of class Secretary.
-     */
     @Test
     public void testPatients() {
         System.out.println("Patients");
@@ -179,13 +140,9 @@ public class SecretaryTest {
         Patients expResult = null;
         Patients result = instance.Patients();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of Prescriptions method, of class Secretary.
-     */
     @Test
     public void testPrescriptions() {
         System.out.println("Prescriptions");
@@ -193,26 +150,18 @@ public class SecretaryTest {
         Prescriptions expResult = null;
         Prescriptions result = instance.Prescriptions();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of setPrescriptions method, of class Secretary.
-     */
     @Test
     public void testSetPrescriptions() {
         System.out.println("setPrescriptions");
         Prescriptions prescriptions = null;
         Secretary instance = new Secretary();
         instance.setPrescriptions(prescriptions);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of Medicines method, of class Secretary.
-     */
     @Test
     public void testMedicines() {
         System.out.println("Medicines");
@@ -220,21 +169,16 @@ public class SecretaryTest {
         Medicines expResult = null;
         Medicines result = instance.Medicines();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of setMedicines method, of class Secretary.
-     */
     @Test
     public void testSetMedicines() {
         System.out.println("setMedicines");
         Medicines medicines = null;
         Secretary instance = new Secretary();
         instance.setMedicines(medicines);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
     
 }

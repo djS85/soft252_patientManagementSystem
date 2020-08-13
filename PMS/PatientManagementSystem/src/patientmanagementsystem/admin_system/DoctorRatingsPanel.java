@@ -15,10 +15,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import panels.AdminSystemMain;
+import panels.PatientSystemMain;
 import patientmanagementsystem.doctor_system.Doctor;
 import patientmanagementsystem.doctor_system.DoctorRating;
 import patientmanagementsystem.doctor_system.DoctorRatings;
 import patientmanagementsystem.patient_system.Patient;
+import utils.Files;
 
 /**
  *
@@ -30,27 +33,29 @@ public class DoctorRatingsPanel extends javax.swing.JPanel {
      * Creates new form DoctorRatingsPanel
      */
     
-    //Laptop
-//    protected final String ratingsPath = "C:\\Users\\djs85\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\doctor_ratings.json";
-    
-    //Desktop
-    protected final String ratingsPath = "C:\\Users\\Dyn\\Desktop\\soft252_patientManagementSystem\\PMS\\PatientManagementSystem\\src\\json\\doctor_ratings.json";
     
     private Administrator admin;
     private Patient patient;
+    
+    private AdminSystemMain adminMain;
+    private PatientSystemMain patientMain;
 
     protected Gson gson;
 
-    public DoctorRatingsPanel(Administrator _admin) {
+    public DoctorRatingsPanel(Administrator _admin, AdminSystemMain _adminMain) {
         this.admin = _admin;
         this.patient = null;
+        this.patientMain = null;
+        this.adminMain = _adminMain;
         gson = new GsonBuilder().setPrettyPrinting().create();
         initComponents();
     }
     
-    public DoctorRatingsPanel(Patient _patient) {
+    public DoctorRatingsPanel(Patient _patient, PatientSystemMain _patientMain) {
         this.patient = _patient;
         this.admin = null;
+        this.adminMain = null;
+        this.patientMain = _patientMain;
         gson = new GsonBuilder().setPrettyPrinting().create();
         initComponents();
     }
@@ -79,6 +84,7 @@ public class DoctorRatingsPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Doctor Ratings");
@@ -114,6 +120,13 @@ public class DoctorRatingsPanel extends javax.swing.JPanel {
         jLabel6.setText("Doctor ID :");
 
         jLabel7.setText("Doctor Ratings :");
+
+        jButton3.setText("Home");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -154,7 +167,10 @@ public class DoctorRatingsPanel extends javax.swing.JPanel {
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(299, 299, 299)))
+                        .addGap(299, 299, 299))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -188,7 +204,9 @@ public class DoctorRatingsPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -219,6 +237,12 @@ public class DoctorRatingsPanel extends javax.swing.JPanel {
             jTextArea1.setText("Dr. " + doctorSurname + " currently has no ratings.");
         }
         
+        if ( this.patient != null ) {
+            patientMain.clearFields();
+        } else if ( this.adminMain != null ) {
+            adminMain.clearFields();
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -235,14 +259,27 @@ public class DoctorRatingsPanel extends javax.swing.JPanel {
             textArea1.setText("You must be a patient to rate doctors.");
         }
         
-        
+        if ( this.patient != null ) {
+            patientMain.clearFields();
+        } else if ( this.adminMain != null ) {
+            adminMain.clearFields();
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        if ( this.patient != null ) {
+            patientMain.setHomePanel();
+        } else if ( this.adminMain != null ) {
+            adminMain.setHomePanel();
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     public ArrayList<DoctorRating> getDoctorRatings() {
         
         ArrayList<DoctorRating> doctorRatings = new ArrayList<>();
         
-        try ( FileReader fr = new FileReader(ratingsPath) ) {
+        try ( FileReader fr = new FileReader(Files.DOCTOR_RATINGS_PATH) ) {
             doctorRatings = gson.fromJson(fr, new TypeToken<ArrayList<DoctorRating>>() {}.getType());
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -252,9 +289,12 @@ public class DoctorRatingsPanel extends javax.swing.JPanel {
         
     }
     
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

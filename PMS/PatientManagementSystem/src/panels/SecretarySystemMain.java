@@ -219,6 +219,14 @@ public class SecretarySystemMain extends javax.swing.JPanel {
         parent.revalidate();
     
     }
+    
+    public void setHomePanel() {
+        parent.setPanel(PanelType.SEC_MAIN);
+    }
+    
+    public void clearFields() {
+        parent.clearFields();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

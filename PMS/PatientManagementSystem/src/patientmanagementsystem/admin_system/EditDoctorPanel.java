@@ -7,6 +7,7 @@ package patientmanagementsystem.admin_system;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import panels.AdminSystemMain;
 
 /**
  *
@@ -19,11 +20,13 @@ public class EditDoctorPanel extends javax.swing.JPanel {
      */
     
     protected Administrator admin;
+    private AdminSystemMain adminMain;
     
     protected Gson gson;
     
-    public EditDoctorPanel(Administrator _admin) {
+    public EditDoctorPanel(Administrator _admin, AdminSystemMain _adminMain) {
         this.admin = _admin;
+        this.adminMain = _adminMain;
         this.gson = new GsonBuilder().setPrettyPrinting().create();
         initComponents();
     }
@@ -54,6 +57,7 @@ public class EditDoctorPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Doctor Editor");
@@ -84,6 +88,13 @@ public class EditDoctorPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton3.setText("Admin Home");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,11 +119,14 @@ public class EditDoctorPanel extends javax.swing.JPanel {
                     .addComponent(jButton2))
                 .addContainerGap(176, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -160,6 +174,10 @@ public class EditDoctorPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addGap(24, 24, 24))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -176,7 +194,7 @@ public class EditDoctorPanel extends javax.swing.JPanel {
         
         admin.addDoctorAccount(firstname, surname, address, age, pwd);
         
-        clearFields();
+        this.adminMain.clearFields();
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -186,28 +204,19 @@ public class EditDoctorPanel extends javax.swing.JPanel {
         
         admin.removeDoctorAccount(docID);
         
-        clearFields();
+        this.adminMain.clearFields();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    public void clearFields() {
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
-        jTextField5.setText("");
-        jTextField6.setText("");
-        jTextField7.setText("");
-        jTextField8.setText("");
-        
-    }
-    
-    
-    
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        this.adminMain.setHomePanel();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

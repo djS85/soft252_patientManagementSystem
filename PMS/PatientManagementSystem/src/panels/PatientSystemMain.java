@@ -57,7 +57,7 @@ public class PatientSystemMain extends javax.swing.JPanel {
             
             case RATE_DOCTOR:
                 if ( this.doctorRatingsPanel == null ) {
-                    this.doctorRatingsPanel = new DoctorRatingsPanel(user);
+                    this.doctorRatingsPanel = new DoctorRatingsPanel(user, this);
                     parent.setContentPane(this.doctorRatingsPanel);
                 } else {
                     parent.setContentPane(this.doctorRatingsPanel);

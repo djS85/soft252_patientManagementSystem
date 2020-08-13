@@ -27,9 +27,6 @@ public class ViewPatientHistory extends javax.swing.JPanel {
     private Patient patient;
     private PatientSystemMain patientMain;
     
-    private Doctor doctor;
-    private DoctorSystemMain doctorMain;
-    
     public ViewPatientHistory(Patient _patient, PatientSystemMain _patientMain) {
         this.patient = _patient;
         this.patientMain = _patientMain;
@@ -40,12 +37,6 @@ public class ViewPatientHistory extends javax.swing.JPanel {
         
         showPatientHistory();
         
-    }
-    
-    public ViewPatientHistory(Doctor _doctor, DoctorSystemMain _doctorMain) {
-        this.doctor = _doctor;
-        this.doctorMain = _doctorMain;
-        initComponents();
     }
     
     public void showPatientHistory() {
@@ -96,6 +87,7 @@ public class ViewPatientHistory extends javax.swing.JPanel {
         jTextArea2 = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Patient History");
@@ -111,6 +103,13 @@ public class ViewPatientHistory extends javax.swing.JPanel {
         jLabel2.setText("Appointments : ");
 
         jLabel3.setText("Prescriptions : ");
+
+        jButton1.setText("Patient Home");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -129,11 +128,13 @@ public class ViewPatientHistory extends javax.swing.JPanel {
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel3)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE))))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,12 +148,19 @@ public class ViewPatientHistory extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
-                .addGap(0, 92, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        patientMain.setHomePanel();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

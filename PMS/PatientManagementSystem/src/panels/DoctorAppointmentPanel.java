@@ -28,6 +28,7 @@ public class DoctorAppointmentPanel extends javax.swing.JPanel {
         this.doctorMain = _doctorMain;
         this.doctor = _doctor;
         this.sec = null;
+        this.secMain = null;
         initComponents();
     }
     
@@ -35,6 +36,7 @@ public class DoctorAppointmentPanel extends javax.swing.JPanel {
         this.sec = _sec;
         this.secMain = _secMain;
         this.doctor = null;
+        this.doctorMain = null;
         initComponents();
     }
 
@@ -98,7 +100,7 @@ public class DoctorAppointmentPanel extends javax.swing.JPanel {
 
         jLabel7.setText("Patient ID :");
 
-        jButton2.setText("Doctor Home");
+        jButton2.setText("Home");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -193,9 +195,11 @@ public class DoctorAppointmentPanel extends javax.swing.JPanel {
         
         if ( this.doctor != null ) {
             this.doctor.createAppointment(doctor, patientID, patientFirstname, patientSurname, date, doctorNotes);
+            this.doctorMain.clearFields();
         }
         else if ( this.sec != null ) {
             this.sec.createAppointment(doctor, patientID, patientFirstname, patientSurname, date, doctorNotes);
+            this.secMain.clearFields();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -207,6 +211,8 @@ public class DoctorAppointmentPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         if ( this.doctor != null ) {
             this.doctorMain.setHomePanel();
+        } else if ( this.secMain != null ) {
+            this.secMain.setHomePanel();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
